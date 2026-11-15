@@ -1,6 +1,11 @@
 <?php
 declare(strict_types=1);
 
+if (!defined('NEXABIE_ROUTER')) {
+    http_response_code(404);
+    exit('Not found');
+}
+
 require __DIR__ . '/bootstrap.php';
 
 /* ---------------- Field helpers ---------------- */
@@ -352,7 +357,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     coerce_values($sections[$section]['fields'], $data);
     $content[$section] = $data;
     save_json('content.json', $content);
-    header('Location: content.php?section=' . rawurlencode($section) . '&saved=1');
+    header('Location: index.php?page=content&section=' . rawurlencode($section) . '&saved=1');
     exit;
 }
 
@@ -364,11 +369,11 @@ admin_head('Content — ' . $sections[$section]['label'], 'content');
 
 <div class="tabs">
   <?php foreach ($sections as $key => $s): ?>
-    <a class="tab<?= $key === $section ? ' on' : '' ?>" href="content.php?section=<?= e($key) ?>"><?= e($s['label']) ?></a>
+    <a class="tab<?= $key === $section ? ' on' : '' ?>" href="index.php?page=content&section=<?= e($key) ?>"><?= e($s['label']) ?></a>
   <?php endforeach; ?>
 </div>
 
-<form class="form" method="post" action="content.php?section=<?= e($section) ?>">
+<form class="form" method="post" action="index.php?page=content&section=<?= e($section) ?>">
   <?= csrf_field() ?>
   <input type="hidden" name="section" value="<?= e($section) ?>">
 

@@ -1,6 +1,11 @@
 <?php
 declare(strict_types=1);
 
+if (!defined('NEXABIE_ROUTER')) {
+    http_response_code(404);
+    exit('Not found');
+}
+
 require __DIR__ . '/bootstrap.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -10,9 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($action === 'upload') {
         $path = handle_upload($_FILES['image'] ?? []);
         if ($path) {
-            header('Location: media.php?saved=1');
+            header('Location: index.php?page=media&saved=1');
         } else {
-            header('Location: media.php?error=' . rawurlencode('Upload failed — check the file type (jpg, png, webp, gif, svg) and size.'));
+            header('Location: index.php?page=media&error=' . rawurlencode('Upload failed — check the file type (jpg, png, webp, gif, svg) and size.'));
         }
         exit;
     }
@@ -20,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($action === 'delete') {
         $path = (string) ($_POST['path'] ?? '');
         delete_upload($path);
-        header('Location: media.php?saved=1');
+        header('Location: index.php?page=media&saved=1');
         exit;
     }
 }
@@ -31,7 +36,7 @@ admin_head('Media', 'media');
 ?>
 
 <h2>Upload an image</h2>
-<form class="form narrow upload-form" method="post" action="media.php" enctype="multipart/form-data">
+<form class="form narrow upload-form" method="post" action="index.php?page=media" enctype="multipart/form-data">
   <?= csrf_field() ?>
   <input type="hidden" name="action" value="upload">
   <div class="fld">
@@ -54,7 +59,7 @@ admin_head('Media', 'media');
     <img src="<?= e($path) ?>" alt="" loading="lazy">
     <figcaption>
       <button type="button" class="path" data-copy="<?= e($path) ?>" title="Click to copy"><?= e($path) ?></button>
-      <form method="post" action="media.php" onsubmit="return confirm('Delete this image? Content referencing it will show the fallback illustration.')">
+      <form method="post" action="index.php?page=media" onsubmit="return confirm('Delete this image? Content referencing it will show the fallback illustration.')">
         <?= csrf_field() ?>
         <input type="hidden" name="action" value="delete">
         <input type="hidden" name="path" value="<?= e($path) ?>">

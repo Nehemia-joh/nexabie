@@ -20,7 +20,11 @@ $pageKey = preg_replace('/\.php$/', '', $currentPage);
   <link rel="stylesheet" href="css/style.css">
   <!-- Live palette from Admin → Settings (must come after style.css) -->
   <?= palette_css() ?>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230b0b0a'/><text x='16' y='23' font-size='18' font-family='Georgia' font-style='italic' fill='%233ea0e3' text-anchor='middle'>n</text></svg>">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+  <link rel="icon" href="assets/favicon-64.png" sizes="64x64">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta name="theme-color" content="#0b0b0a">
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to content</a>

@@ -17,16 +17,27 @@
   var toggle = document.querySelector(".menu-toggle");
   var nav = document.querySelector(".nav");
   if (toggle && nav) {
-    toggle.addEventListener("click", function () {
-      var open = nav.classList.toggle("is-open");
+    var setMenu = function (open) {
+      nav.classList.toggle("is-open", open);
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
       toggle.querySelector(".menu-label").textContent = open ? "Close" : "Menu";
+    };
+    toggle.addEventListener("click", function () {
+      setMenu(!nav.classList.contains("is-open"));
     });
     nav.addEventListener("click", function (e) {
-      if (e.target.tagName === "A") {
-        nav.classList.remove("is-open");
-        toggle.setAttribute("aria-expanded", "false");
-        toggle.querySelector(".menu-label").textContent = "Menu";
+      if (e.target.tagName === "A") setMenu(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && nav.classList.contains("is-open")) setMenu(false);
+    });
+    document.addEventListener("click", function (e) {
+      if (
+        nav.classList.contains("is-open") &&
+        !nav.contains(e.target) &&
+        !toggle.contains(e.target)
+      ) {
+        setMenu(false);
       }
     });
   }
@@ -81,6 +92,14 @@
       { threshold: 0.12 }
     );
     revealEls.forEach(function (el) {
+      // Stagger: siblings revealed together cascade left-to-right / top-to-bottom
+      var siblings = el.parentElement
+        ? el.parentElement.querySelectorAll(":scope > .reveal")
+        : [];
+      var i = Array.prototype.indexOf.call(siblings, el);
+      if (i > 0) {
+        el.style.setProperty("--rd", Math.min(i * 0.08, 0.4) + "s");
+      }
       io.observe(el);
     });
   } else {

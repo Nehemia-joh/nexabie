@@ -1,6 +1,11 @@
 <?php
 declare(strict_types=1);
 
+if (!defined('NEXABIE_ROUTER')) {
+    http_response_code(404);
+    exit('Not found');
+}
+
 require __DIR__ . '/bootstrap.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -13,12 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             unset($all[$idx]);
             save_json('inquiries.json', array_values($all));
         }
-        header('Location: inbox.php?saved=1');
+        header('Location: index.php?page=inbox&saved=1');
         exit;
     }
     if ($action === 'clear') {
         save_json('inquiries.json', []);
-        header('Location: inbox.php?saved=1');
+        header('Location: index.php?page=inbox&saved=1');
         exit;
     }
 }
@@ -32,7 +37,7 @@ admin_head('Inbox', 'inbox');
   <p class="muted">No messages yet. Enquiries sent through the contact form appear here (and are emailed to <?= e(content()['brand']['email'] ?? '') ?>).</p>
 <?php else: ?>
 <div class="form-actions" style="margin-bottom:18px">
-  <form method="post" action="inbox.php" onsubmit="return confirm('Delete ALL messages?')">
+  <form method="post" action="index.php?page=inbox" onsubmit="return confirm('Delete ALL messages?')">
     <?= csrf_field() ?>
     <input type="hidden" name="action" value="clear">
     <button class="btn-a" type="submit">Clear all</button>
@@ -47,7 +52,7 @@ admin_head('Inbox', 'inbox');
       <a href="mailto:<?= e($row['email']) ?>"><?= e($row['email']) ?></a>
       <span class="muted"><?= e(date('d M Y, H:i', strtotime((string) $row['date']))) ?></span>
       <?php if (!empty($row['service'])): ?><span class="pill"><?= e($row['service']) ?></span><?php endif; ?>
-      <form method="post" action="inbox.php" onsubmit="return confirm('Delete this message?')">
+      <form method="post" action="index.php?page=inbox" onsubmit="return confirm('Delete this message?')">
         <?= csrf_field() ?>
         <input type="hidden" name="action" value="delete_one">
         <input type="hidden" name="index" value="<?= (int) $i ?>">

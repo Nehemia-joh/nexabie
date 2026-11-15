@@ -601,8 +601,14 @@ fieldset.dict legend {
   white-space: pre-line;
 }
 
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .table {
   width: 100%;
+  min-width: 560px;
   border-collapse: collapse;
   background: var(--white, #fff);
   border: 1px solid var(--line, #dfe4ea);
@@ -699,5 +705,16 @@ fieldset.dict legend {
   .list-row .btn-x {
     top: 8px;
     right: 8px;
+  }
+  .admin-main {
+    width: min(100% - 24px, 1040px);
+    padding-top: 26px;
+  }
+  .cards {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+  }
+  .card {
+    padding: 16px;
   }
 }

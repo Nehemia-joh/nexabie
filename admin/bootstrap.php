@@ -1,6 +1,11 @@
 <?php
 declare(strict_types=1);
 
+if (!defined('NEXABIE_ROUTER')) {
+    http_response_code(404);
+    exit('Not found');
+}
+
 require_once dirname(__DIR__) . '/includes/functions.php';
 require_login();
 
@@ -34,6 +39,9 @@ function admin_head(string $title, string $active): void
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?= e($title) ?> — Nexabie CMS</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../assets/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
   <?= palette_css() ?>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,12 +56,12 @@ function admin_head(string $title, string $active): void
     </a>
     <nav>
       <a href="index.php" class="<?= $active === 'dashboard' ? 'on' : '' ?>">Dashboard</a>
-      <a href="content.php" class="<?= $active === 'content' ? 'on' : '' ?>">Content</a>
-      <a href="media.php" class="<?= $active === 'media' ? 'on' : '' ?>">Media</a>
-      <a href="inbox.php" class="<?= $active === 'inbox' ? 'on' : '' ?>">Inbox<?= $count ? ' <span class="pill">' . $count . '</span>' : '' ?></a>
-      <a href="settings.php" class="<?= $active === 'settings' ? 'on' : '' ?>">Settings</a>
+      <a href="index.php?page=content" class="<?= $active === 'content' ? 'on' : '' ?>">Content</a>
+      <a href="index.php?page=media" class="<?= $active === 'media' ? 'on' : '' ?>">Media</a>
+      <a href="index.php?page=inbox" class="<?= $active === 'inbox' ? 'on' : '' ?>">Inbox<?= $count ? ' <span class="pill">' . $count . '</span>' : '' ?></a>
+      <a href="index.php?page=settings" class="<?= $active === 'settings' ? 'on' : '' ?>">Settings</a>
       <a href="../index.php" target="_blank" rel="noopener" class="ghost">View site ↗</a>
-      <a href="logout.php" class="ghost">Log out</a>
+      <a href="index.php?page=logout" class="ghost">Log out</a>
     </nav>
   </header>
   <main class="admin-main">

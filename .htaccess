@@ -1,3 +1,23 @@
+# ---------------------------------------------------------------------------
+# Nexabie — root routing & protection
+# ---------------------------------------------------------------------------
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Admin front controller: every admin URL runs through admin/index.php
+# (pretty URLs — /admin/login …; the canonical links are index.php?page=…)
+RewriteRule ^admin/?$ admin/index.php [L,QSA]
+RewriteRule ^admin/([a-z]+)/?$ admin/index.php?page=$1 [L,QSA]
+
+# Individual admin files (login.php, content.php, …) can NOT be opened
+# directly — they refuse to run outside the router (404) and are 403'd here.
+RewriteRule ^admin/(?!index\.php)[a-z]+\.php$ - [F,L]
+
+# Never expose config or include files over HTTP
+RewriteRule ^(?:config\.php|includes/) - [F,L]
+</IfModule>
+
 # Never serve dotfiles directly (.git, .env*, .cpanel.yml, …)
 <FilesMatch "^\.">
     <IfModule mod_authz_core.c>
@@ -8,5 +28,8 @@
         Deny from all
     </IfModule>
 </FilesMatch>
+
+# No directory listings
+Options -Indexes
 
 DirectoryIndex index.php

@@ -9,6 +9,12 @@
  * Admin credentials live in data/auth.json (change password from Admin → Settings).
  */
 
+// Refuse direct HTTP access — this file is only ever required from PHP.
+if (basename((string) ($_SERVER['SCRIPT_FILENAME'] ?? '')) === 'config.php') {
+    http_response_code(404);
+    exit('Not found');
+}
+
 $env = [];
 $envCandidates = [
     dirname(__DIR__) . '/.envnexabie', // one step back (server)

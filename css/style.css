@@ -147,6 +147,7 @@ a {
 }
 
 .nav a {
+  position: relative;
   text-decoration: none;
   font-size: 15.5px;
   font-weight: 500;
@@ -159,11 +160,22 @@ a {
   color: var(--ink);
 }
 
-.nav a[aria-current="page"] {
-  text-decoration: underline;
-  text-underline-offset: 6px;
-  text-decoration-thickness: 1.5px;
-  text-decoration-color: var(--accent);
+.nav a:not(.btn)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -7px;
+  height: 1.5px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease);
+}
+
+.nav a:not(.btn):hover::after,
+.nav a[aria-current="page"]::after {
+  transform: scaleX(1);
 }
 
 .nav a.btn {
@@ -240,6 +252,18 @@ a {
   background: var(--accent-dark);
 }
 
+.btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 14px 26px -16px rgba(11, 11, 10, 0.55);
+}
+
+.btn-blue:hover {
+  box-shadow: 0 14px 26px -16px rgba(23, 117, 187, 0.6);
+}
+
 .link-arrow {
   display: inline-flex;
   align-items: center;
@@ -271,6 +295,7 @@ a {
 
 .eyebrow {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
   gap: 16px;
@@ -416,6 +441,42 @@ h3 {
   background: var(--line);
 }
 
+/* Hero entrance animation on load */
+.hero-kicker,
+.hero h1,
+.hero-lead,
+.hero-cta,
+.hero-note {
+  animation: rise-in 0.8s var(--ease) both;
+}
+
+.hero h1 {
+  animation-delay: 0.07s;
+}
+
+.hero-lead {
+  animation-delay: 0.14s;
+}
+
+.hero-cta {
+  animation-delay: 0.21s;
+}
+
+.hero-note {
+  animation-delay: 0.28s;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .hero-media {
   margin-top: clamp(44px, 6vw, 72px);
   display: grid;
@@ -544,11 +605,19 @@ h3 {
   aspect-ratio: 21 / 9;
 }
 
-.work-cover svg {
+.work-cover svg,
+.work-cover img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.work-card:hover .work-cover svg,
+.work-card:hover .work-cover img {
+  transform: scale(1.05);
 }
 
 .work-meta {
@@ -873,6 +942,20 @@ blockquote footer strong {
   margin-top: 20px;
 }
 
+.page-hero .breadcrumb,
+.page-hero .display,
+.page-hero .lead {
+  animation: rise-in 0.7s var(--ease) both;
+}
+
+.page-hero .display {
+  animation-delay: 0.07s;
+}
+
+.page-hero .lead {
+  animation-delay: 0.14s;
+}
+
 .breadcrumb {
   font-size: 14px;
   color: var(--ink-3);
@@ -1184,6 +1267,11 @@ blockquote footer strong {
   display: block;
 }
 
+.form-success.is-visible,
+.form-error.is-visible {
+  animation: rise-in 0.4s var(--ease) both;
+}
+
 /* ---------- FAQ ---------- */
 
 .faq {
@@ -1227,6 +1315,22 @@ blockquote footer strong {
   margin: 0 0 22px;
   color: var(--ink-2);
   max-width: 70ch;
+}
+
+@supports selector(::details-content) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+
+  .faq details::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition: block-size 0.35s var(--ease), content-visibility 0.35s allow-discrete;
+  }
+
+  .faq details[open]::details-content {
+    block-size: auto;
+  }
 }
 
 /* ---------- Footer ---------- */
@@ -1324,30 +1428,63 @@ blockquote footer strong {
   align-items: center;
 }
 
-/* ---------- Reveal on scroll ---------- */
+/* ---------- Reveal on scroll ----------
+   Uses the individual `translate` property (not `transform`) so hover
+   effects on the same element keep working after the reveal. */
 
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
 }
 
 .reveal.is-visible {
-  opacity: 1;
-  transform: none;
+  animation: reveal-up 0.7s var(--ease) both;
+  animation-delay: var(--rd, 0s);
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    translate: 0 18px;
+  }
+  to {
+    opacity: 1;
+    translate: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .reveal {
+  .reveal,
+  .reveal.is-visible {
     opacity: 1;
-    transform: none;
-    transition: none;
+    translate: none;
+    animation: none;
   }
   .rotator > span {
     transition: none;
+  }
+  .hero-kicker,
+  .hero h1,
+  .hero-lead,
+  .hero-cta,
+  .hero-note,
+  .page-hero .breadcrumb,
+  .page-hero .display,
+  .page-hero .lead,
+  .form-success.is-visible,
+  .form-error.is-visible,
+  .nav.is-open > a {
+    animation: none;
+  }
+  .nav a:not(.btn)::after,
+  .work-cover svg,
+  .work-cover img {
+    transition: none;
+  }
+  .btn:active {
+    transform: none;
   }
 }
 
@@ -1383,6 +1520,10 @@ blockquote footer strong {
 
   .step {
     border-bottom: 1px solid var(--line);
+  }
+
+  .step:nth-child(2n) {
+    border-right: 0;
   }
 
   .stats {
@@ -1423,13 +1564,31 @@ blockquote footer strong {
     border-bottom: 1px solid var(--line);
     padding: 8px var(--gutter) 20px;
     transform: translateY(-130%);
-    transition: transform 0.35s var(--ease);
+    visibility: hidden;
+    transition: transform 0.35s var(--ease), visibility 0s linear 0.35s;
     box-shadow: var(--shadow);
   }
 
   .nav.is-open {
     transform: translateY(0);
+    visibility: visible;
+    transition: transform 0.35s var(--ease), visibility 0s;
   }
+
+  .nav a:not(.btn)::after {
+    display: none;
+  }
+
+  .nav.is-open > a {
+    animation: rise-in 0.45s var(--ease) both;
+  }
+
+  .nav.is-open > a:nth-child(2) { animation-delay: 0.05s; }
+  .nav.is-open > a:nth-child(3) { animation-delay: 0.1s; }
+  .nav.is-open > a:nth-child(4) { animation-delay: 0.15s; }
+  .nav.is-open > a:nth-child(5) { animation-delay: 0.2s; }
+  .nav.is-open > a:nth-child(6) { animation-delay: 0.25s; }
+  .nav.is-open > a:nth-child(7) { animation-delay: 0.3s; }
 
   .nav a {
     padding: 15px 0;
@@ -1462,6 +1621,10 @@ blockquote footer strong {
     grid-template-columns: 1fr;
   }
 
+  .step {
+    border-right: 0;
+  }
+
   .footer-cols {
     grid-template-columns: 1fr;
   }
@@ -1469,5 +1632,28 @@ blockquote footer strong {
   .cta-band {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .stat {
+    padding: 20px var(--gutter);
+  }
+
+  .media-card {
+    min-height: 230px;
+  }
+
+  .work-body {
+    padding: 18px 18px 20px;
+  }
+
+  .cta-band {
+    padding: 32px 22px;
+  }
+
+  .hero-cta .btn,
+  .cta-actions .btn {
+    width: 100%;
   }
 }

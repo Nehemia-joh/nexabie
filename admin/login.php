@@ -1,6 +1,11 @@
 <?php
 declare(strict_types=1);
 
+if (!defined('NEXABIE_ROUTER')) {
+    http_response_code(404);
+    exit('Not found');
+}
+
 require_once dirname(__DIR__) . '/includes/functions.php';
 
 $error = '';
@@ -23,6 +28,9 @@ $brand = content()['brand'] ?? [];
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Log in — Nexabie CMS</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../assets/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
   <?= palette_css() ?>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +38,7 @@ $brand = content()['brand'] ?? [];
   <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body class="admin login-page">
-  <form class="login-card" method="post" action="login.php">
+  <form class="login-card" method="post" action="index.php?page=login">
     <div class="admin-brand" style="justify-content:center;margin-bottom:6px">
       <span class="mark"><?= e($brand['mark'] ?? 'n') ?></span>
       <?= e($brand['name'] ?? 'Nexabie') ?> <span class="tag">CMS</span>
