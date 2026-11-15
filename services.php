@@ -12,17 +12,15 @@ require __DIR__ . '/includes/header.php';
 
     <section class="page-hero wrap">
       <p class="breadcrumb"><a href="index"><?= e($brand['name']) ?></a> — Services</p>
-      <h1 class="display"><?= e($s['title_a']) ?> <span class="serif-em"><?= e($s['title_b']) ?></span></h1>
+      <h1 class="display"><?= e($s['title_a']) ?><br><?= e($s['title_b']) ?></h1>
       <p class="lead"><?= e($s['lead']) ?></p>
     </section>
 
     <!-- Engagements -->
     <section class="section wrap" style="padding-top:0" aria-labelledby="eng-title">
-      <div class="eyebrow"><span><span class="num">01</span> · <?= e($s['engagements_eyebrow']) ?></span></div>
       <div class="services-list">
         <?php foreach ($s['engagements'] as $eng): ?>
-        <article class="service reveal">
-          <span class="service-num"><?= e($eng['num']) ?></span>
+        <article class="service">
           <div>
             <h3 id="eng-title"><?= e($eng['name']) ?></h3>
             <p class="lead"><?= e($eng['desc']) ?></p>
@@ -33,7 +31,7 @@ require __DIR__ . '/includes/header.php';
             <ul>
               <?php foreach ($eng['points'] as $pt): ?><li><?= e($pt) ?></li><?php endforeach; ?>
             </ul>
-            <a class="link-arrow" href="contact?service=<?= e(strtolower($eng['name'])) ?>"><?= e($eng['cta']) ?></a>
+            <a class="link-more" href="contact?service=<?= e(strtolower($eng['name'])) ?>"><?= e($eng['cta']) ?></a>
           </div>
         </article>
         <?php endforeach; ?>
@@ -42,11 +40,10 @@ require __DIR__ . '/includes/header.php';
 
     <!-- Process -->
     <section class="section section-rule wrap" aria-labelledby="process-title">
-      <div class="eyebrow"><span><span class="num">02</span> · <?= e($s['process_eyebrow']) ?></span></div>
       <div class="section-head">
-        <h2 class="h2" id="process-title"><?= e($s['process_a']) ?><br><span class="serif-em"><?= e($s['process_b']) ?></span></h2>
+        <h2 class="h2" id="process-title"><?= e($s['process_a']) ?><br><?= e($s['process_b']) ?></h2>
       </div>
-      <div class="process reveal">
+      <div class="process">
         <?php foreach ($s['steps'] as $step): ?>
         <div class="step">
           <span class="n"><?= e($step['n']) ?></span>
@@ -59,11 +56,10 @@ require __DIR__ . '/includes/header.php';
 
     <!-- FAQ -->
     <section class="section section-rule wrap" aria-labelledby="faq-title">
-      <div class="eyebrow"><span><span class="num">03</span> · <?= e($s['faq_eyebrow']) ?></span></div>
       <div class="section-head">
-        <h2 class="h2" id="faq-title"><?= e($s['faq_a']) ?> <span class="serif-em"><?= e($s['faq_b']) ?></span></h2>
+        <h2 class="h2" id="faq-title"><?= e($s['faq_a']) ?> <?= e($s['faq_b']) ?></h2>
       </div>
-      <div class="faq reveal">
+      <div class="faq">
         <?php foreach ($s['faqs'] as $faq): ?>
         <details>
           <summary><?= e($faq['q']) ?></summary>
@@ -75,9 +71,9 @@ require __DIR__ . '/includes/header.php';
 
     <!-- CTA -->
     <section class="section wrap">
-      <div class="cta-band reveal">
+      <div class="cta-band">
         <div>
-          <h2 class="h2"><?= e($s['cta_a']) ?> <span class="serif-em"><?= e($s['cta_b']) ?></span></h2>
+          <h2 class="h2"><?= e($s['cta_a']) ?> <?= e($s['cta_b']) ?></h2>
           <p class="lead">Or email <a href="mailto:<?= e($brand['email']) ?>" style="color:inherit"><?= e($brand['email']) ?></a></p>
         </div>
         <div class="cta-actions">

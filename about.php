@@ -15,7 +15,7 @@ require __DIR__ . '/includes/header.php';
       <p class="breadcrumb"><a href="index"><?= e($brand['name']) ?></a> — About</p>
       <div class="about-grid">
         <div>
-          <h1 class="display"><?= e($a['title_a']) ?> <span class="serif-em"><?= e($a['title_b']) ?></span></h1>
+          <h1 class="display"><?= e($a['title_a']) ?><br><?= e($a['title_b']) ?></h1>
           <p class="lead"><?= e($a['lead']) ?></p>
           <div class="hero-cta" style="margin-top:28px">
             <a class="btn btn-primary" href="contact"><?= e($a['cta_primary']) ?></a>
@@ -32,22 +32,20 @@ require __DIR__ . '/includes/header.php';
       </div>
     </section>
 
-    <!-- 01 Why we build -->
+    <!-- Why we build -->
     <section class="section section-rule wrap" aria-labelledby="why-title">
-      <div class="eyebrow"><span><span class="num">01</span> · <?= e($a['why_eyebrow']) ?></span></div>
       <div class="section-head">
-        <h2 class="h2" id="why-title"><?= e($a['why_a']) ?><br><span class="serif-em"><?= e($a['why_b']) ?></span></h2>
+        <h2 class="h2" id="why-title"><?= e($a['why_a']) ?><br><?= e($a['why_b']) ?></h2>
         <p class="lead"><?= e($a['why_lead']) ?></p>
       </div>
     </section>
 
-    <!-- 02 How we work -->
+    <!-- How we work -->
     <section class="section section-rule wrap" aria-labelledby="how-title">
-      <div class="eyebrow"><span><span class="num">02</span> · <?= e($a['how_eyebrow']) ?></span></div>
       <div class="section-head">
-        <h2 class="h2" id="how-title"><?= e($a['how_a']) ?> <span class="serif-em"><?= e($a['how_b']) ?></span></h2>
+        <h2 class="h2" id="how-title"><?= e($a['how_a']) ?> <?= e($a['how_b']) ?></h2>
       </div>
-      <div class="values reveal">
+      <div class="values">
         <?php foreach ($a['values'] as $v): ?>
         <div class="value">
           <h4><?= e($v['title']) ?></h4>
@@ -57,14 +55,13 @@ require __DIR__ . '/includes/header.php';
       </div>
     </section>
 
-    <!-- 03 Experience -->
+    <!-- Experience -->
     <section class="section section-rule wrap" id="experience" aria-labelledby="exp-title">
-      <div class="eyebrow"><span><span class="num">03</span> · <?= e($a['exp_eyebrow']) ?></span></div>
       <div class="section-head">
-        <h2 class="h2" id="exp-title"><?= e($a['exp_a']) ?> <span class="serif-em"><?= e($a['exp_b']) ?></span></h2>
+        <h2 class="h2" id="exp-title"><?= e($a['exp_a']) ?> <?= e($a['exp_b']) ?></h2>
       </div>
 
-      <div class="timeline reveal">
+      <div class="timeline">
         <?php foreach ($a['jobs'] as $job): ?>
         <article class="job">
           <span class="when"><?= e($job['when']) ?></span>
@@ -77,7 +74,7 @@ require __DIR__ . '/includes/header.php';
         <?php endforeach; ?>
       </div>
 
-      <div class="skill-groups reveal" style="margin-top:48px">
+      <div class="skill-groups" style="margin-top:48px">
         <?php foreach ($a['skills'] as $g): ?>
         <div class="skill-group">
           <h4><?= e($g['title']) ?></h4>
@@ -91,9 +88,9 @@ require __DIR__ . '/includes/header.php';
 
     <!-- CTA -->
     <section class="section wrap">
-      <div class="cta-band reveal">
+      <div class="cta-band">
         <div>
-          <h2 class="h2"><?= e($a['cta_a']) ?> <span class="serif-em"><?= e($a['cta_b']) ?></span></h2>
+          <h2 class="h2"><?= e($a['cta_a']) ?> <?= e($a['cta_b']) ?></h2>
           <p class="lead">Book a call or email <a href="mailto:<?= e($brand['email']) ?>" style="color:inherit"><?= e($brand['email']) ?></a></p>
         </div>
         <div class="cta-actions">

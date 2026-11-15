@@ -10,7 +10,7 @@
         "twitter": "#"
     },
     "home": {
-        "kicker": "Nexabie — Design & engineering studio · Dar es Salaam, Tanzania",
+        "kicker": "Design & engineering studio · Dar es Salaam, Tanzania",
         "hero_before": "We bring your",
         "hero_words": [
             "web app",
@@ -23,8 +23,8 @@
         "lead": "Product design and full-stack development, from first sketch to shipped software. We also build and run our own products.",
         "cta_primary": "Start a project",
         "cta_secondary": "See the work",
-        "note1": "Booking calls now · Pick a time that suits you",
-        "note2": "Working with clients worldwide · UTC+3",
+        "note1": "Booking calls now",
+        "note2": "Working worldwide, UTC+3",
         "hero_media": [
             {
                 "image": "",
@@ -55,7 +55,6 @@
                 "label": "reply to every enquiry"
             }
         ],
-        "work_eyebrow": "Selected work",
         "work_link": "See all projects",
         "work_title_a": "Products and client work,",
         "work_title_b": "from first message to launch.",
@@ -65,11 +64,9 @@
             "afyacare",
             "sokolink"
         ],
-        "services_eyebrow": "What we do",
         "services_link": "Services & process",
         "services_title_a": "Three ways in, depending on",
         "services_title_b": "where your idea is.",
-        "quote_eyebrow": "In their words",
         "quote": "“They took a rough idea and gave us software our team actually enjoys using — on time and explained in plain language.”",
         "quote_author": "Amina Juma",
         "quote_role": "Operations Lead, AfyaCare",
@@ -112,7 +109,7 @@
                 "kicker": "Receiptly · Our product · Live",
                 "title": "VAT-ready receipts from a phone, with reports sent automatically",
                 "metric": "1,200+ active users",
-                "metric_link": "Visit receiptly.app →",
+                "metric_link": "Visit receiptly.app",
                 "image": "",
                 "href": "#receiptly"
             },
@@ -126,7 +123,7 @@
                 "kicker": "AfyaCare · Client project · Live",
                 "title": "Clinic appointments confirmed in minutes, not a day or two",
                 "metric": "5,000+ bookings made",
-                "metric_link": "View case study →",
+                "metric_link": "View case study",
                 "image": "",
                 "href": "#afyacare"
             },
@@ -140,7 +137,7 @@
                 "kicker": "SokoLink · Our product · In development",
                 "title": "Verified sellers, fair quotes, and payment held until the job is done",
                 "metric": "Launching Q2 2027",
-                "metric_link": "View →",
+                "metric_link": "View",
                 "image": "",
                 "href": "#sokolink"
             },
@@ -154,7 +151,7 @@
                 "kicker": "NuruPay · Client project · Beta",
                 "title": "Send, save and receive money with fees you can actually see",
                 "metric": "Launching March 2027",
-                "metric_link": "View →",
+                "metric_link": "View",
                 "image": "",
                 "href": "#nurupay"
             },
@@ -168,25 +165,22 @@
                 "kicker": "Biro · Our product · Open beta",
                 "title": "Your team’s docs and decisions, in one searchable place",
                 "metric": "Free during beta",
-                "metric_link": "View →",
+                "metric_link": "View",
                 "image": "",
                 "href": "#biro"
             }
         ],
-        "next_kicker": "06",
         "next_title": "Your idea could be next.",
         "next_text": "Tell us what you have in mind on a short call. No brief needed.",
         "next_cta": "Book a call"
     },
     "services": {
-        "title_a": "Three ways to bring your idea",
-        "title_b": "into focus.",
+        "title_a": "Three ways to bring your",
+        "title_b": "idea into focus.",
         "lead": "Start wherever your idea is today. Each one works on its own, and each begins with a call.",
-        "engagements_eyebrow": "Engagements",
         "deliverables_label": "What you get",
         "engagements": [
             {
-                "num": "01",
                 "name": "Consultation",
                 "desc": "For when you have an idea and need clarity before spending on design or code.",
                 "duration": "Typical length: 1–2 weeks",
@@ -198,7 +192,6 @@
                 "cta": "Book a call about Consultation"
             },
             {
-                "num": "02",
                 "name": "Design",
                 "desc": "For when you’re ready to see your idea, screen by screen, before anything is built.",
                 "duration": "Typical length: 3–6 weeks",
@@ -210,7 +203,6 @@
                 "cta": "Book a call about Design"
             },
             {
-                "num": "03",
                 "name": "Development",
                 "desc": "For when the designs are ready and need careful, maintainable engineering.",
                 "duration": "Typical length: 6–12 weeks",
@@ -222,7 +214,6 @@
                 "cta": "Book a call about Development"
             }
         ],
-        "process_eyebrow": "How we’ll work",
         "process_a": "You see your idea early,",
         "process_b": "and only then is it built.",
         "steps": [
@@ -252,7 +243,6 @@
                 "text": "Working software, documentation and a clear handover."
             }
         ],
-        "faq_eyebrow": "Questions",
         "faq_a": "Good to know",
         "faq_b": "before we start.",
         "faqs": [
@@ -285,11 +275,9 @@
         "cta_secondary": "Experience",
         "portrait_image": "",
         "portrait_alt": "Team photo placeholder",
-        "why_eyebrow": "Why we build",
         "why_a": "Curiosity got us building.",
         "why_b": "Good service keeps us at it.",
         "why_lead": "When we see someone do their craft at their best, we want to do the same for the people we build for.",
-        "how_eyebrow": "How we work",
         "how_a": "Three habits we",
         "how_b": "don’t compromise on.",
         "values": [
@@ -306,7 +294,6 @@
                 "text": "Engineering you can maintain, explained plainly."
             }
         ],
-        "exp_eyebrow": "Experience",
         "exp_a": "Experience",
         "exp_b": "and skills.",
         "jobs": [
@@ -372,17 +359,15 @@
         ],
         "calls": [
             {
-                "label": "Call 01",
                 "name": "Intro call",
                 "desc": "A first conversation about your idea, the role, or how we could work together.",
-                "dur": "30 min · Choose →",
+                "dur": "30 min · Choose",
                 "subject": "Intro call with Nexabie"
             },
             {
-                "label": "Call 02",
                 "name": "Working session",
                 "desc": "Bring one specific problem — a design review, a project plan. We work through it together.",
-                "dur": "60 min · Choose →",
+                "dur": "60 min · Choose",
                 "subject": "Working session with Nexabie"
             }
         ],

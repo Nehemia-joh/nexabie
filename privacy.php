@@ -12,7 +12,7 @@ require __DIR__ . '/includes/header.php';
 
     <section class="page-hero wrap">
       <p class="breadcrumb"><a href="index"><?= e($brand['name']) ?></a> — Privacy</p>
-      <h1 class="display"><?= e($p['title_a']) ?> <span class="serif-em"><?= e($p['title_b']) ?></span></h1>
+      <h1 class="display"><?= e($p['title_a']) ?><br><?= e($p['title_b']) ?></h1>
       <p class="lead"><?= e($p['lead']) ?></p>
     </section>
 

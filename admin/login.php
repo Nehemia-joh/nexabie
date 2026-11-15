@@ -40,7 +40,11 @@ $brand = content()['brand'] ?? [];
 <body class="admin login-page">
   <form class="login-card" method="post" action="login">
     <div class="admin-brand" style="justify-content:center;margin-bottom:6px">
-      <span class="mark"><?= e($brand['mark'] ?? 'n') ?></span>
+      <?php if (!empty($brand['logo']) && is_file(SITE_ROOT . '/' . $brand['logo'])): ?>
+        <img class="mark-img" src="<?= e(asset($brand['logo'])) ?>" alt="">
+      <?php else: ?>
+        <span class="mark"><?= e($brand['mark'] ?? 'n') ?></span>
+      <?php endif; ?>
       <?= e($brand['name'] ?? 'Nexabie') ?> <span class="tag">CMS</span>
     </div>
     <p class="muted" style="text-align:center;margin-top:0">Sign in to edit the website.</p>

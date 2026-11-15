@@ -56,7 +56,7 @@ admin_head('Media', 'media');
 <div class="gallery">
   <?php foreach ($uploads as $path): ?>
   <figure class="gal-item">
-    <img src="<?= e($path) ?>" alt="" loading="lazy">
+    <img src="<?= e(asset($path)) ?>" alt="" loading="lazy">
     <figcaption>
       <button type="button" class="path" data-copy="<?= e($path) ?>" title="Click to copy"><?= e($path) ?></button>
       <form method="post" action="media" onsubmit="return confirm('Delete this image? Content referencing it will show the fallback illustration.')">

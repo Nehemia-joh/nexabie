@@ -51,13 +51,18 @@ function admin_head(string $title, string $active): void
 <body class="admin">
   <header class="admin-bar">
     <a class="admin-brand" href="./">
-      <span class="mark"><?= e($brand['mark'] ?? 'n') ?></span>
+      <?php if (!empty($brand['logo']) && is_file(SITE_ROOT . '/' . $brand['logo'])): ?>
+        <img class="mark-img" src="<?= e(asset($brand['logo'])) ?>" alt="">
+      <?php else: ?>
+        <span class="mark"><?= e($brand['mark'] ?? 'n') ?></span>
+      <?php endif; ?>
       <?= e($brand['name'] ?? 'Nexabie') ?> <span class="tag">CMS</span>
     </a>
     <nav>
       <a href="./" class="<?= $active === 'dashboard' ? 'on' : '' ?>">Dashboard</a>
       <a href="content" class="<?= $active === 'content' ? 'on' : '' ?>">Content</a>
       <a href="media" class="<?= $active === 'media' ? 'on' : '' ?>">Media</a>
+      <a href="font" class="<?= $active === 'font' ? 'on' : '' ?>">Font</a>
       <a href="inbox" class="<?= $active === 'inbox' ? 'on' : '' ?>">Inbox<?= $count ? ' <span class="pill">' . $count . '</span>' : '' ?></a>
       <a href="settings" class="<?= $active === 'settings' ? 'on' : '' ?>">Settings</a>
       <a href="../" target="_blank" rel="noopener" class="ghost">View site ↗</a>

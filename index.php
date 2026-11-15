@@ -44,7 +44,7 @@ require __DIR__ . '/includes/header.php';
           <?php else: ?>
             <?= fallback_svg($key) ?>
           <?php endif; ?>
-          <div class="media-caption"><span><strong><?= e(explode(' · ', $m['title'] ?? '')[0]) ?></strong><?= isset($m['title']) && str_contains($m['title'], ' · ') ? ' · ' . e(explode(' · ', $m['title'], 2)[1]) : '' ?></span><span><?= e($m['type'] ?? '') ?></span></div>
+          <div class="media-caption"><span><?= e($m['title'] ?? '') ?></span><span><?= e($m['type'] ?? '') ?></span></div>
         </div>
         <?php endforeach; ?>
       </div>
@@ -57,15 +57,14 @@ require __DIR__ . '/includes/header.php';
       <?php endforeach; ?>
     </section>
 
-    <!-- 01 Selected work -->
+    <!-- Selected work -->
     <section class="section wrap" aria-labelledby="work-title">
-      <div class="eyebrow">
-        <span><span class="num">01</span> · <?= e($h['work_eyebrow']) ?></span>
-        <a class="link-arrow" href="work"><?= e($h['work_link']) ?></a>
-      </div>
       <div class="section-head">
-        <h2 class="h2" id="work-title"><?= e($h['work_title_a']) ?><br><span class="serif-em"><?= e($h['work_title_b']) ?></span></h2>
-        <p class="lead"><?= e($h['work_lead']) ?></p>
+        <h2 class="h2" id="work-title"><?= e($h['work_title_a']) ?><br><?= e($h['work_title_b']) ?></h2>
+        <div class="section-aside">
+          <p class="lead"><?= e($h['work_lead']) ?></p>
+          <a class="link-more" href="work"><?= e($h['work_link']) ?></a>
+        </div>
       </div>
 
       <div class="work-grid">
@@ -78,7 +77,7 @@ require __DIR__ . '/includes/header.php';
         foreach ($featured as $i => $p):
             $wide = $i === 0;
         ?>
-        <a class="work-card reveal<?= $wide ? ' wide' : '' ?>" href="<?= e($p['href'] ?? ('work#' . $p['id'])) ?>" data-category="<?= e($p['category']) ?>">
+        <a class="work-card<?= $wide ? ' wide' : '' ?>" href="<?= e($p['href'] ?? ('work#' . $p['id'])) ?>" data-category="<?= e($p['category']) ?>">
           <div class="work-cover">
             <?php if (!empty($p['image'])): ?>
               <img src="<?= e($p['image']) ?>" alt="<?= e($p['title']) ?>" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0">
@@ -91,7 +90,7 @@ require __DIR__ . '/includes/header.php';
             </div>
           </div>
           <div class="work-body">
-            <span class="kicker"><?= e(explode(' · ', $p['kicker'])[0]) ?> · <?= e($p['badge']) ?></span>
+            <span class="kicker"><?= e(explode(' · ', $p['kicker'])[0]) ?></span>
             <h3><?= e($p['title']) ?></h3>
             <div class="work-metric"><span><?= e($p['metric']) ?></span><span><?= e($p['metric_link']) ?></span></div>
           </div>
@@ -100,19 +99,17 @@ require __DIR__ . '/includes/header.php';
       </div>
     </section>
 
-    <!-- 02 Services -->
+    <!-- Services -->
     <section class="section section-rule wrap" aria-labelledby="services-title">
-      <div class="eyebrow">
-        <span><span class="num">02</span> · <?= e($h['services_eyebrow']) ?></span>
-        <a class="link-arrow" href="services"><?= e($h['services_link']) ?></a>
-      </div>
       <div class="section-head">
-        <h2 class="h2" id="services-title"><?= e($h['services_title_a']) ?><br><span class="serif-em"><?= e($h['services_title_b']) ?></span></h2>
+        <h2 class="h2" id="services-title"><?= e($h['services_title_a']) ?><br><?= e($h['services_title_b']) ?></h2>
+        <div class="section-aside">
+          <a class="link-more" href="services"><?= e($h['services_link']) ?></a>
+        </div>
       </div>
       <div class="services-list">
         <?php foreach ($services['engagements'] as $eng): ?>
-        <article class="service reveal">
-          <span class="service-num"><?= e($eng['num']) ?></span>
+        <article class="service">
           <div>
             <h3><?= e($eng['name']) ?></h3>
             <p class="lead"><?= e($eng['desc']) ?></p>
@@ -122,17 +119,16 @@ require __DIR__ . '/includes/header.php';
             <ul>
               <?php foreach ($eng['points'] as $pt): ?><li><?= e($pt) ?></li><?php endforeach; ?>
             </ul>
-            <a class="link-arrow" href="contact?service=<?= e(strtolower($eng['name'])) ?>"><?= e($eng['cta']) ?></a>
+            <a class="link-more" href="contact?service=<?= e(strtolower($eng['name'])) ?>"><?= e($eng['cta']) ?></a>
           </div>
         </article>
         <?php endforeach; ?>
       </div>
     </section>
 
-    <!-- 03 Testimonial -->
-    <section class="section section-rule wrap" aria-labelledby="words-title">
-      <div class="eyebrow"><span><span class="num">03</span> · <?= e($h['quote_eyebrow']) ?></span></div>
-      <div class="quote-block reveal">
+    <!-- Testimonial -->
+    <section class="section section-rule wrap">
+      <div class="quote-block">
         <blockquote>
           <p><?= e($h['quote']) ?></p>
           <footer><strong><?= e($h['quote_author']) ?></strong> · <?= e($h['quote_role']) ?></footer>
@@ -140,16 +136,16 @@ require __DIR__ . '/includes/header.php';
         <aside class="quote-aside">
           <h4><?= e($h['aside_title']) ?></h4>
           <p><?= e($h['aside_text']) ?></p>
-          <a class="link-arrow" href="contact"><?= e($h['aside_link']) ?></a>
+          <a class="link-more" href="contact"><?= e($h['aside_link']) ?></a>
         </aside>
       </div>
     </section>
 
     <!-- CTA -->
     <section class="section wrap">
-      <div class="cta-band reveal">
+      <div class="cta-band">
         <div>
-          <h2 class="h2"><?= e($h['cta_a']) ?> <span class="serif-em"><?= e($h['cta_b']) ?></span></h2>
+          <h2 class="h2"><?= e($h['cta_a']) ?> <?= e($h['cta_b']) ?></h2>
           <p class="lead">Book a call or email <a href="mailto:<?= e($brand['email']) ?>" style="color:inherit"><?= e($brand['email']) ?></a></p>
         </div>
         <div class="cta-actions">

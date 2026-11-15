@@ -67,6 +67,14 @@ code {
   font-size: 15px;
 }
 
+.admin-brand .mark-img {
+  height: 26px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  object-position: left center;
+}
+
 .admin-brand .tag {
   font-size: 11px;
   font-weight: 700;
@@ -400,6 +408,50 @@ fieldset.dict legend {
   flex: none;
 }
 
+/* Logo image field (Brand section) */
+.logo-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.logo-preview {
+  display: grid;
+  place-items: center;
+  width: 148px;
+  height: 64px;
+  flex: none;
+  background: var(--paper, #fafafa);
+  border: 1px solid var(--line, #dfe4ea);
+  border-radius: 9px;
+  padding: 8px 12px;
+  overflow: hidden;
+}
+
+.logo-preview img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.logo-preview.is-empty {
+  font-size: 12.5px;
+  color: var(--ink-3, #6d7680);
+  border-style: dashed;
+}
+
+.logo-controls {
+  flex: 1;
+  min-width: 220px;
+}
+
+.logo-controls .hint-line {
+  margin: 6px 0 10px;
+  font-size: 12.5px;
+  color: var(--ink-3, #6d7680);
+}
+
 .form-actions {
   display: flex;
   gap: 12px;
@@ -717,4 +769,130 @@ fieldset.dict legend {
   .card {
     padding: 16px;
   }
+}
+
+/* ---------- Font test page ---------- */
+
+@font-face {
+  font-family: "Sneaker";
+  src: url("../assets/fonts/SNEAKER.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.tester-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: flex-end;
+  margin-bottom: 14px;
+}
+
+.tester-text {
+  flex: 1 1 320px;
+}
+
+.tester-size {
+  flex: 0 0 220px;
+}
+
+.tester-bg {
+  flex: 0 0 auto;
+}
+
+.tester-samples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.seg {
+  display: inline-flex;
+  border: 1px solid var(--line, #dfe4ea);
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.seg-btn {
+  font: inherit;
+  font-size: 13.5px;
+  padding: 9px 14px;
+  border: 0;
+  border-right: 1px solid var(--line, #dfe4ea);
+  background: var(--paper, #fafafa);
+  color: var(--ink-2, #3a3a3a);
+  cursor: pointer;
+}
+
+.seg-btn:last-child {
+  border-right: 0;
+}
+
+.seg-btn:hover {
+  background: var(--stone, #f1f1f1);
+}
+
+.seg-btn.on {
+  background: var(--ink, #000);
+  color: var(--paper, #fafafa);
+}
+
+.seg-btn:focus-visible {
+  outline: 2px solid var(--accent-bright, #3ea0e3);
+  outline-offset: -2px;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent-bright, #3ea0e3);
+}
+
+.type-preview {
+  border: 1px solid var(--line, #dfe4ea);
+  border-radius: 12px;
+  padding: clamp(20px, 4vw, 44px);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.type-preview[data-bg="paper"] {
+  background: var(--paper, #fafafa);
+  color: var(--ink, #000);
+}
+
+.type-preview[data-bg="ink"] {
+  background: var(--ink, #000);
+  color: var(--paper, #fafafa);
+}
+
+.type-preview[data-bg="blue"] {
+  background: var(--accent-bright, #3ea0e3);
+  color: var(--ink, #000);
+}
+
+.type-preview[data-bg="red"] {
+  background: var(--red, #f53030);
+  color: var(--white, #fff);
+}
+
+.type-line {
+  font-family: "Sneaker", system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.12;
+  word-wrap: break-word;
+}
+
+.type-plain {
+  font-family: "Instrument Sans", system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 70ch;
+  border: 1px solid var(--line, #dfe4ea);
+  border-radius: 12px;
+  background: var(--paper, #fafafa);
+  padding: 18px 22px;
+  margin-bottom: 8px;
 }

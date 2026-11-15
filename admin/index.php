@@ -7,7 +7,7 @@ declare(strict_types=1);
  * Every admin URL is routed through this file:
  *   /admin                    → dashboard
  *   /admin/login              → login form
- *   /admin/content|media|inbox|settings|logout
+ *   /admin/content|media|inbox|settings|font|logout
  *
  * The other admin/*.php files refuse direct access (404) and are only
  * ever reached from here, so login.php and friends are never readable
@@ -24,6 +24,7 @@ $pages = [
     'media'     => 'media.php',
     'inbox'     => 'inbox.php',
     'settings'  => 'settings.php',
+    'font'      => 'font.php',
 ];
 
 $page = (string) ($_GET['page'] ?? 'dashboard');

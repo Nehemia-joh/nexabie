@@ -61,9 +61,9 @@ function default_palette(): array
 {
     return [
         'paper' => '#fafafa', 'paper_l' => '#ffffff',
-        'stone' => '#eef2f6', 'stone_l' => '#f5f7fa',
-        'line' => '#dfe4ea', 'line_soft' => '#ebeff3',
-        'ink' => '#0b0b0a', 'ink_2' => '#33383e', 'ink_3' => '#6d7680',
+        'stone' => '#f1f1f1', 'stone_l' => '#f7f7f7',
+        'line' => '#e2e2e2', 'line_soft' => '#eeeeee',
+        'ink' => '#000000', 'ink_2' => '#3a3a3a', 'ink_3' => '#6f6f6f',
         'accent' => '#1775bb', 'accent_dark' => '#0e5a91',
         'accent_bright' => '#3ea0e3', 'accent_tint' => '#e8f4fd',
         'red' => '#f53030',
@@ -73,6 +73,15 @@ function default_palette(): array
 function e(mixed $value): string
 {
     return htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');
+}
+
+/** Root-absolute URL for a stored asset path (uploads/…) so it resolves
+ *  from any page, including /admin/* where relative paths break. */
+function asset(string $rel): string
+{
+    $rel = str_replace(['..', "\0"], '', $rel);
+    $rel = ltrim($rel, '/');
+    return $rel === '' ? '' : '/' . $rel;
 }
 
 function hex_to_rgb(string $hex): array
@@ -115,7 +124,7 @@ function palette_css(?array $settings = null): string
         '--red' => $p['red'],
         '--red-10' => rgba($p['red'], 0.10),
         '--white' => '#ffffff',
-        '--shadow' => '0 1px 2px rgba(11, 11, 10, 0.06), 0 12px 32px -16px ' . rgba($p['accent_bright'], 0.28),
+        '--shadow' => '0 1px 2px rgba(0, 0, 0, 0.05), 0 16px 32px -24px rgba(0, 0, 0, 0.18)',
     ];
     $out = '';
     foreach ($map as $var => $val) {

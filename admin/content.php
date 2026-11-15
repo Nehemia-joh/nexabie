@@ -54,8 +54,26 @@ function render_field(string $name, array $f, mixed $value, int $depth = 0): str
             return '<div class="fld"><label for="' . e($id) . '">' . $label . ' <span class="hint">upload in Media, paste path</span></label>'
                 . '<div class="img-row">'
                 . '<input id="' . e($id) . '" name="' . e($name) . '" type="text" placeholder="uploads/example.jpg" value="' . e((string) ($value ?? '')) . '">'
-                . (!empty($value) ? '<img class="thumb" src="' . e($value) . '" alt="">' : '')
+                . (!empty($value) ? '<img class="thumb" src="' . e(asset((string) $value)) . '" alt="">' : '')
                 . '</div></div>';
+
+        case 'logo':
+            $cur = trim((string) ($value ?? ''));
+            $maxMb = (int) (site_config()['upload_max_mb'] ?? 5);
+            $html = '<div class="fld"><label>' . $label . ' <span class="hint">shown in the site header — any shape or ratio</span></label>'
+                . '<div class="logo-row">';
+            $html .= $cur !== ''
+                ? '<span class="logo-preview"><img src="' . e(asset($cur)) . '" alt="Current logo"></span>'
+                : '<span class="logo-preview is-empty">No image</span>';
+            $html .= '<div class="logo-controls">'
+                . '<input type="hidden" name="' . e($name) . '" value="' . e($cur) . '">'
+                . '<input type="file" name="logo_file" accept=".png,.jpg,.jpeg,.webp,.gif,.svg">'
+                . '<p class="hint-line">PNG, SVG, WebP or JPG — the header scales it to fit. Max ' . $maxMb . ' MB.</p>';
+            if ($cur !== '') {
+                $html .= '<label class="check"><input type="checkbox" name="logo_remove" value="1"> Remove image (use the letter mark)</label>';
+            }
+            $html .= '</div></div></div>';
+            return $html;
 
         case 'strings':
             $vals = is_array($value) ? $value : [];
@@ -150,7 +168,8 @@ $sections = [
         'label' => 'Brand & contact',
         'fields' => [
             f_text('name', 'Brand name'),
-            f_text('mark', 'Logo letter'),
+            f_text('logo', 'Logo image', ['type' => 'logo']),
+            f_text('mark', 'Letter mark (fallback)'),
             f_area('tagline', 'Footer tagline', 2),
             f_text('location', 'Footer location line'),
             f_text('email', 'Contact email'),
@@ -179,17 +198,14 @@ $sections = [
             ['k' => 'stats', 'label' => 'Stats strip', 'type' => 'rows', 'fields' => [
                 f_text('value', 'Value'), f_text('label', 'Label'),
             ]],
-            f_text('work_eyebrow', 'Work section label'),
             f_text('work_link', 'Work link text'),
             f_text('work_title_a', 'Work title — line 1'),
-            f_text('work_title_b', 'Work title — line 2 (italic)'),
+            f_text('work_title_b', 'Work title — line 2'),
             f_area('work_lead', 'Work lead paragraph'),
             f_text('featured', 'Featured project ids', ['type' => 'csv']),
-            f_text('services_eyebrow', 'Services section label'),
             f_text('services_link', 'Services link text'),
             f_text('services_title_a', 'Services title — line 1'),
-            f_text('services_title_b', 'Services title — line 2 (italic)'),
-            f_text('quote_eyebrow', 'Testimonial section label'),
+            f_text('services_title_b', 'Services title — line 2'),
             f_area('quote', 'Testimonial quote', 3),
             f_text('quote_author', 'Quote — name'),
             f_text('quote_role', 'Quote — role'),
@@ -197,14 +213,14 @@ $sections = [
             f_area('aside_text', 'Aside card text', 3),
             f_text('aside_link', 'Aside link text'),
             f_text('cta_a', 'CTA heading — part 1'),
-            f_text('cta_b', 'CTA heading — part 2 (italic)'),
+            f_text('cta_b', 'CTA heading — part 2'),
         ],
     ],
     'work' => [
         'label' => 'Work / projects',
         'fields' => [
             f_text('title_a', 'Page title — line 1'),
-            f_text('title_b', 'Page title — line 2 (italic)'),
+            f_text('title_b', 'Page title — line 2'),
             f_area('lead', 'Page lead'),
             ['k' => 'filters', 'label' => 'Filter buttons', 'type' => 'rows', 'fields' => [
                 f_text('value', 'Filter value'), f_text('label', 'Filter label'),
@@ -223,7 +239,6 @@ $sections = [
                 f_text('href', 'Link URL'),
                 ['k' => 'wide', 'label' => 'Wide card (full width)', 'type' => 'checkbox'],
             ]],
-            f_text('next_kicker', 'Closing card — number'),
             f_text('next_title', 'Closing card — title'),
             f_text('next_text', 'Closing card — text'),
             f_text('next_cta', 'Closing card — button'),
@@ -233,32 +248,28 @@ $sections = [
         'label' => 'Services page',
         'fields' => [
             f_text('title_a', 'Page title — line 1'),
-            f_text('title_b', 'Page title — line 2 (italic)'),
+            f_text('title_b', 'Page title — line 2'),
             f_area('lead', 'Page lead'),
-            f_text('engagements_eyebrow', 'Engagements label'),
             f_text('deliverables_label', '"What you get" label'),
             ['k' => 'engagements', 'label' => 'Engagements', 'type' => 'rows', 'fields' => [
-                f_text('num', 'Number (01)'),
                 f_text('name', 'Name'),
                 f_area('desc', 'Description', 2),
                 f_text('duration', 'Duration'),
                 ['k' => 'points', 'label' => 'Deliverables', 'type' => 'lines', 'rows' => 4],
                 f_text('cta', 'Link text'),
             ]],
-            f_text('process_eyebrow', 'Process label'),
             f_text('process_a', 'Process title — line 1'),
-            f_text('process_b', 'Process title — line 2 (italic)'),
+            f_text('process_b', 'Process title — line 2'),
             ['k' => 'steps', 'label' => 'Process steps', 'type' => 'rows', 'fields' => [
                 f_text('n', 'Number'), f_text('title', 'Title'), f_area('text', 'Text', 2),
             ]],
-            f_text('faq_eyebrow', 'FAQ label'),
             f_text('faq_a', 'FAQ title — line 1'),
-            f_text('faq_b', 'FAQ title — line 2 (italic)'),
+            f_text('faq_b', 'FAQ title — line 2'),
             ['k' => 'faqs', 'label' => 'FAQ items', 'type' => 'rows', 'fields' => [
                 f_text('q', 'Question'), f_area('a', 'Answer', 3),
             ]],
             f_text('cta_a', 'CTA — part 1'),
-            f_text('cta_b', 'CTA — part 2 (italic)'),
+            f_text('cta_b', 'CTA — part 2'),
             f_text('cta_button', 'CTA button'),
         ],
     ],
@@ -266,25 +277,22 @@ $sections = [
         'label' => 'About page',
         'fields' => [
             f_text('title_a', 'Page title — line 1'),
-            f_text('title_b', 'Page title — line 2 (italic)'),
+            f_text('title_b', 'Page title — line 2'),
             f_area('lead', 'Page lead'),
             f_text('cta_primary', 'Primary button'),
             f_text('cta_secondary', 'Secondary button'),
             f_text('portrait_image', 'Portrait image', ['type' => 'image']),
             f_text('portrait_alt', 'Portrait alt text'),
-            f_text('why_eyebrow', 'Section 01 label'),
             f_text('why_a', 'Section 01 title — line 1'),
-            f_text('why_b', 'Section 01 title — line 2 (italic)'),
+            f_text('why_b', 'Section 01 title — line 2'),
             f_area('why_lead', 'Section 01 lead'),
-            f_text('how_eyebrow', 'Section 02 label'),
             f_text('how_a', 'Section 02 title — line 1'),
-            f_text('how_b', 'Section 02 title — line 2 (italic)'),
+            f_text('how_b', 'Section 02 title — line 2'),
             ['k' => 'values', 'label' => 'How we work cards', 'type' => 'rows', 'fields' => [
                 f_text('title', 'Title'), f_area('text', 'Text', 2),
             ]],
-            f_text('exp_eyebrow', 'Section 03 label'),
             f_text('exp_a', 'Experience title — line 1'),
-            f_text('exp_b', 'Experience title — line 2 (italic)'),
+            f_text('exp_b', 'Experience title — line 2'),
             ['k' => 'jobs', 'label' => 'Experience entries', 'type' => 'rows', 'fields' => [
                 f_text('when', 'Years'), f_text('title', 'Role'), f_text('org', 'Organisation'), f_area('text', 'Description', 3),
             ]],
@@ -293,21 +301,20 @@ $sections = [
                 ['k' => 'items', 'label' => 'Skills', 'type' => 'lines', 'rows' => 4],
             ]],
             f_text('cta_a', 'CTA — part 1'),
-            f_text('cta_b', 'CTA — part 2 (italic)'),
+            f_text('cta_b', 'CTA — part 2'),
         ],
     ],
     'contact' => [
         'label' => 'Contact page',
         'fields' => [
             f_text('title_a', 'Page title — line 1'),
-            f_text('title_b', 'Page title — line 2 (italic)'),
+            f_text('title_b', 'Page title — line 2'),
             f_area('lead', 'Page lead'),
             f_text('note1', 'Note 1'),
             f_text('note2', 'Note 2'),
             f_text('next_title', 'What happens next — title'),
             ['k' => 'next_steps', 'label' => 'What happens next — steps', 'type' => 'strings'],
             ['k' => 'calls', 'label' => 'Call options', 'type' => 'rows', 'fields' => [
-                f_text('label', 'Label (Call 01)'), f_text('name', 'Name'), f_area('desc', 'Description', 2),
                 f_text('dur', 'Duration'), f_text('subject', 'Email subject'),
             ]],
             f_text('form_title', 'Form title'),
@@ -331,7 +338,7 @@ $sections = [
         'label' => 'Privacy page',
         'fields' => [
             f_text('title_a', 'Page title — line 1'),
-            f_text('title_b', 'Page title — line 2 (italic)'),
+            f_text('title_b', 'Page title — line 2'),
             f_area('lead', 'Page lead'),
             ['k' => 'sections', 'label' => 'Sections', 'type' => 'rows', 'fields' => [
                 f_text('q', 'Question'), f_area('a', 'Answer', 4),
@@ -355,6 +362,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $data = [];
     }
     coerce_values($sections[$section]['fields'], $data);
+
+    if ($section === 'brand') {
+        if (($_POST['logo_remove'] ?? '') === '1') {
+            $data['logo'] = '';
+        }
+        $file = $_FILES['logo_file'] ?? null;
+        if (is_array($file) && ($file['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_NO_FILE) {
+            $path = handle_upload($file);
+            if ($path === null) {
+                header('Location: content?section=brand&error=' . rawurlencode(
+                    'Logo upload failed — use JPG, PNG, WebP, GIF or SVG, up to '
+                    . (int) (site_config()['upload_max_mb'] ?? 5) . ' MB.'
+                ));
+                exit;
+            }
+            $data['logo'] = $path;
+        }
+    }
+
     $content[$section] = $data;
     save_json('content.json', $content);
     header('Location: content?section=' . rawurlencode($section) . '&saved=1');
@@ -373,7 +399,7 @@ admin_head('Content — ' . $sections[$section]['label'], 'content');
   <?php endforeach; ?>
 </div>
 
-<form class="form" method="post" action="content?section=<?= e($section) ?>">
+<form class="form" method="post" action="content?section=<?= e($section) ?>" enctype="multipart/form-data">
   <?= csrf_field() ?>
   <input type="hidden" name="section" value="<?= e($section) ?>">
 

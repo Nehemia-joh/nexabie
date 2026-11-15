@@ -68,7 +68,7 @@ require __DIR__ . '/includes/header.php';
 
     <section class="page-hero wrap">
       <p class="breadcrumb"><a href="index"><?= e($brand['name']) ?></a> — Contact</p>
-      <h1 class="display"><?= e($ct['title_a']) ?> <span class="serif-em"><?= e($ct['title_b']) ?></span></h1>
+      <h1 class="display"><?= e($ct['title_a']) ?><br><?= e($ct['title_b']) ?></h1>
       <p class="lead"><?= e($ct['lead']) ?></p>
       <div class="hero-note">
         <span><?= e($ct['note1']) ?></span>
@@ -79,7 +79,7 @@ require __DIR__ . '/includes/header.php';
     <section class="section wrap" style="padding-top:0">
       <div class="contact-grid">
         <div>
-          <div class="steps-what reveal">
+          <div class="steps-what">
             <h3 class="h3"><?= e($ct['next_title']) ?></h3>
             <ol>
               <?php foreach ($ct['next_steps'] as $step): ?>
@@ -88,11 +88,10 @@ require __DIR__ . '/includes/header.php';
             </ol>
           </div>
 
-          <div class="call-options reveal">
+          <div class="call-options">
             <?php foreach ($ct['calls'] as $call): ?>
             <a class="call-option" href="mailto:<?= e($brand['email']) ?>?subject=<?= rawurlencode($call['subject']) ?>">
               <div>
-                <span class="label"><?= e($call['label']) ?></span>
                 <h4><?= e($call['name']) ?></h4>
                 <p><?= e($call['desc']) ?></p>
               </div>
@@ -102,7 +101,7 @@ require __DIR__ . '/includes/header.php';
           </div>
         </div>
 
-        <div class="contact-form reveal">
+        <div class="contact-form">
           <?php if ($sent && !$error): ?>
           <div class="form-success is-visible" id="form-success" tabindex="-1" role="status">
             <?= e($ct['success']) ?>

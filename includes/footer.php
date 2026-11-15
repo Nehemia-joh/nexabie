@@ -7,7 +7,7 @@
           <p class="footer-tagline"><?= e($brand['tagline'] ?? 'Ideas, built into software.') ?></p>
           <p class="footer-loc"><?= e($brand['location'] ?? '') ?></p>
         </div>
-        <a class="btn btn-primary" href="contact">Start a project →</a>
+        <a class="btn btn-primary" href="contact">Start a project</a>
       </div>
       <div class="footer-cols">
         <div>
@@ -31,13 +31,13 @@
           <h5>Contact</h5>
           <ul>
             <li><a href="mailto:<?= e($brand['email'] ?? '') ?>"><?= e($brand['email'] ?? '') ?></a></li>
-            <li><a href="contact">Book a call →</a></li>
+            <li><a href="contact">Book a call</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
         <span>© <span id="year"><?= date('Y') ?></span> <?= e($brand['name'] ?? 'Nexabie') ?>. All rights reserved.</span>
-        <span><a href="privacy">Privacy</a> · <a class="back-top" href="#top">Back to top ↑</a></span>
+        <span class="footer-legal"><a href="privacy">Privacy</a><a href="#top">Back to top</a></span>
       </div>
     </div>
   </footer>
