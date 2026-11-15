@@ -1,0 +1,456 @@
+{
+    "brand": {
+        "name": "Nexabie",
+        "mark": "n",
+        "tagline": "Ideas, built into software.",
+        "location": "Based in Dar es Salaam, Tanzania · working with clients worldwide · UTC+3",
+        "email": "hello@nexabie.co.tz",
+        "linkedin": "#",
+        "github": "#",
+        "twitter": "#"
+    },
+    "home": {
+        "kicker": "Nexabie — Design & engineering studio · Dar es Salaam, Tanzania",
+        "hero_before": "We bring your",
+        "hero_words": [
+            "web app",
+            "mobile app",
+            "marketplace",
+            "fintech idea",
+            "internal tool"
+        ],
+        "hero_after": "into focus.",
+        "lead": "Product design and full-stack development, from first sketch to shipped software. We also build and run our own products.",
+        "cta_primary": "Start a project",
+        "cta_secondary": "See the work",
+        "note1": "Booking calls now · Pick a time that suits you",
+        "note2": "Working with clients worldwide · UTC+3",
+        "hero_media": [
+            {
+                "image": "",
+                "title": "Nexabie Studio · client dashboard",
+                "type": "Web app"
+            },
+            {
+                "image": "",
+                "title": "Receiptly · our product",
+                "type": "Mobile"
+            }
+        ],
+        "stats": [
+            {
+                "value": "40+",
+                "label": "projects shipped"
+            },
+            {
+                "value": "1,200+",
+                "label": "users on our products"
+            },
+            {
+                "value": "3",
+                "label": "products running"
+            },
+            {
+                "value": "<24h",
+                "label": "reply to every enquiry"
+            }
+        ],
+        "work_eyebrow": "Selected work",
+        "work_link": "See all projects",
+        "work_title_a": "Products and client work,",
+        "work_title_b": "from first message to launch.",
+        "work_lead": "A few things we’ve designed and built recently — including software we run ourselves.",
+        "featured": [
+            "receiptly",
+            "afyacare",
+            "sokolink"
+        ],
+        "services_eyebrow": "What we do",
+        "services_link": "Services & process",
+        "services_title_a": "Three ways in, depending on",
+        "services_title_b": "where your idea is.",
+        "quote_eyebrow": "In their words",
+        "quote": "“They took a rough idea and gave us software our team actually enjoys using — on time and explained in plain language.”",
+        "quote_author": "Amina Juma",
+        "quote_role": "Operations Lead, AfyaCare",
+        "aside_title": "How projects start",
+        "aside_text": "No long brief needed. A short call, a written summary back to you, and a clear next step.",
+        "aside_link": "Book a call",
+        "cta_a": "Have an idea? Let’s bring it",
+        "cta_b": "into focus."
+    },
+    "work": {
+        "title_a": "Apps and websites,",
+        "title_b": "from first message to launch.",
+        "lead": "Client projects and products we run ourselves. Filter by type below.",
+        "filters": [
+            {
+                "value": "all",
+                "label": "All"
+            },
+            {
+                "value": "client",
+                "label": "Client work"
+            },
+            {
+                "value": "product",
+                "label": "Products"
+            },
+            {
+                "value": "team",
+                "label": "Team projects"
+            }
+        ],
+        "projects": [
+            {
+                "id": "receiptly",
+                "wide": true,
+                "category": "product",
+                "badge": "Our product",
+                "status": "Live",
+                "status_class": "live",
+                "kicker": "Receiptly · Our product · Live",
+                "title": "VAT-ready receipts from a phone, with reports sent automatically",
+                "metric": "1,200+ active users",
+                "metric_link": "Visit receiptly.app →",
+                "image": "",
+                "href": "#receiptly"
+            },
+            {
+                "id": "afyacare",
+                "wide": false,
+                "category": "client team",
+                "badge": "Client project",
+                "status": "Live",
+                "status_class": "live",
+                "kicker": "AfyaCare · Client project · Live",
+                "title": "Clinic appointments confirmed in minutes, not a day or two",
+                "metric": "5,000+ bookings made",
+                "metric_link": "View case study →",
+                "image": "",
+                "href": "#afyacare"
+            },
+            {
+                "id": "sokolink",
+                "wide": false,
+                "category": "product",
+                "badge": "Our product",
+                "status": "In development",
+                "status_class": "soon",
+                "kicker": "SokoLink · Our product · In development",
+                "title": "Verified sellers, fair quotes, and payment held until the job is done",
+                "metric": "Launching Q2 2027",
+                "metric_link": "View →",
+                "image": "",
+                "href": "#sokolink"
+            },
+            {
+                "id": "nurupay",
+                "wide": false,
+                "category": "client",
+                "badge": "Client project",
+                "status": "Beta",
+                "status_class": "soon",
+                "kicker": "NuruPay · Client project · Beta",
+                "title": "Send, save and receive money with fees you can actually see",
+                "metric": "Launching March 2027",
+                "metric_link": "View →",
+                "image": "",
+                "href": "#nurupay"
+            },
+            {
+                "id": "biro",
+                "wide": false,
+                "category": "product team",
+                "badge": "Our product",
+                "status": "Open beta",
+                "status_class": "live",
+                "kicker": "Biro · Our product · Open beta",
+                "title": "Your team’s docs and decisions, in one searchable place",
+                "metric": "Free during beta",
+                "metric_link": "View →",
+                "image": "",
+                "href": "#biro"
+            }
+        ],
+        "next_kicker": "06",
+        "next_title": "Your idea could be next.",
+        "next_text": "Tell us what you have in mind on a short call. No brief needed.",
+        "next_cta": "Book a call"
+    },
+    "services": {
+        "title_a": "Three ways to bring your idea",
+        "title_b": "into focus.",
+        "lead": "Start wherever your idea is today. Each one works on its own, and each begins with a call.",
+        "engagements_eyebrow": "Engagements",
+        "deliverables_label": "What you get",
+        "engagements": [
+            {
+                "num": "01",
+                "name": "Consultation",
+                "desc": "For when you have an idea and need clarity before spending on design or code.",
+                "duration": "Typical length: 1–2 weeks",
+                "points": [
+                    "A written summary of your idea and who it’s for",
+                    "Agreed scope and priorities, and what to leave out for now",
+                    "A plan with a rough timeline and cost, and a recommended next step"
+                ],
+                "cta": "Book a call about Consultation"
+            },
+            {
+                "num": "02",
+                "name": "Design",
+                "desc": "For when you’re ready to see your idea, screen by screen, before anything is built.",
+                "duration": "Typical length: 3–6 weeks",
+                "points": [
+                    "User flows and wireframes you can react to",
+                    "A clickable prototype, tested with real users where possible",
+                    "Final designs and a reusable design system in Figma"
+                ],
+                "cta": "Book a call about Design"
+            },
+            {
+                "num": "03",
+                "name": "Development",
+                "desc": "For when the designs are ready and need careful, maintainable engineering.",
+                "duration": "Typical length: 6–12 weeks",
+                "points": [
+                    "A working web or mobile app (React, Flutter or React Native, NestJS)",
+                    "Tested, documented code that you own",
+                    "Launch support and a clear handover"
+                ],
+                "cta": "Book a call about Development"
+            }
+        ],
+        "process_eyebrow": "How we’ll work",
+        "process_a": "You see your idea early,",
+        "process_b": "and only then is it built.",
+        "steps": [
+            {
+                "n": "01",
+                "title": "Listen",
+                "text": "Your idea, in your words: a written summary of what we heard."
+            },
+            {
+                "n": "02",
+                "title": "Clarify",
+                "text": "Scope and priorities agreed, and what we’ll leave out."
+            },
+            {
+                "n": "03",
+                "title": "Visualise",
+                "text": "Wireframes or a clickable prototype you can react to."
+            },
+            {
+                "n": "04",
+                "title": "Refine",
+                "text": "Final designs you’ve approved, ready to build."
+            },
+            {
+                "n": "05",
+                "title": "Build",
+                "text": "Working software, documentation and a clear handover."
+            }
+        ],
+        "faq_eyebrow": "Questions",
+        "faq_a": "Good to know",
+        "faq_b": "before we start.",
+        "faqs": [
+            {
+                "q": "How much does a project cost?",
+                "a": "Every engagement starts with a consultation, so you get a written estimate before committing. Typical ranges depend on scope — we’ll give you a clear number and what’s included (and excluded) in writing."
+            },
+            {
+                "q": "Do you work with clients outside Tanzania?",
+                "a": "Yes. We’re based in Dar es Salaam (UTC+3) and work with clients worldwide — calls are scheduled in your timezone, and projects run with shared docs and regular check-ins."
+            },
+            {
+                "q": "Who owns the code and designs?",
+                "a": "You do. On handover you receive the source code, design files and documentation, with no lock-in to us."
+            },
+            {
+                "q": "Can you take over an existing project?",
+                "a": "Often, yes. Send us the current state (repo, designs or a short screen recording) and we’ll tell you honestly whether we’re the right team to continue it."
+            }
+        ],
+        "cta_a": "Not sure where to start?",
+        "cta_b": "Begin with a consultation.",
+        "cta_button": "Book a consultation"
+    },
+    "about": {
+        "title_a": "We build",
+        "title_b": "what people imagine.",
+        "lead": "Nexabie is a design and engineering studio in Dar es Salaam, Tanzania. We design products in Figma and build them in React, Flutter and NestJS — for clients worldwide, and for our own products.",
+        "cta_primary": "Work with us",
+        "cta_secondary": "Experience",
+        "portrait_image": "",
+        "portrait_alt": "Team photo placeholder",
+        "why_eyebrow": "Why we build",
+        "why_a": "Curiosity got us building.",
+        "why_b": "Good service keeps us at it.",
+        "why_lead": "When we see someone do their craft at their best, we want to do the same for the people we build for.",
+        "how_eyebrow": "How we work",
+        "how_a": "Three habits we",
+        "how_b": "don’t compromise on.",
+        "values": [
+            {
+                "title": "Listen first",
+                "text": "Your idea, in your words, before any solution is proposed."
+            },
+            {
+                "title": "Show it early",
+                "text": "Visuals you can react to before anything is built."
+            },
+            {
+                "title": "Build to last",
+                "text": "Engineering you can maintain, explained plainly."
+            }
+        ],
+        "exp_eyebrow": "Experience",
+        "exp_a": "Experience",
+        "exp_b": "and skills.",
+        "jobs": [
+            {
+                "when": "2024 – Present",
+                "title": "Founders & studio lead",
+                "org": "Nexabie · Dar es Salaam",
+                "text": "End-to-end product work for fintech, health and marketplace clients: research, design systems, full-stack builds — plus three products we run ourselves."
+            },
+            {
+                "when": "2022 – 2024",
+                "title": "Product Designer",
+                "org": "Fintech & logistics clients · Tanzania",
+                "text": "Led design for mobile money and operations tools: user flows, prototypes, high-fidelity UI and shared design systems used by engineering teams."
+            },
+            {
+                "when": "2020 – 2022",
+                "title": "Software Developer",
+                "org": "Web & mobile projects · East Africa",
+                "text": "Built and shipped Laravel, React and Flutter applications alongside senior engineers in Agile teams."
+            }
+        ],
+        "skills": [
+            {
+                "title": "Design",
+                "items": [
+                    "UX research",
+                    "Prototyping and UI design",
+                    "Design systems"
+                ]
+            },
+            {
+                "title": "Engineering",
+                "items": [
+                    "React, TypeScript, React Native, Flutter",
+                    "NestJS, Laravel, Python, FastAPI",
+                    "PostgreSQL, SQL, REST APIs"
+                ]
+            },
+            {
+                "title": "Tools",
+                "items": [
+                    "Figma and Miro",
+                    "Git and GitHub",
+                    "Expo, TanStack, CI pipelines"
+                ]
+            }
+        ],
+        "cta_a": "Have an idea? Let’s bring it",
+        "cta_b": "into focus."
+    },
+    "contact": {
+        "title_a": "Tell us about",
+        "title_b": "your idea.",
+        "lead": "No brief needed. Send a message or pick a call format below — we reply within 24 hours.",
+        "note1": "Video calls on Google Meet · Times shown in your timezone",
+        "note2": "Or email hello@nexabie.co.tz",
+        "next_title": "What happens next",
+        "next_steps": [
+            "You send a message or pick a call format.",
+            "We confirm a time and send a Google Meet link.",
+            "You get a short written recap with next steps after the call."
+        ],
+        "calls": [
+            {
+                "label": "Call 01",
+                "name": "Intro call",
+                "desc": "A first conversation about your idea, the role, or how we could work together.",
+                "dur": "30 min · Choose →",
+                "subject": "Intro call with Nexabie"
+            },
+            {
+                "label": "Call 02",
+                "name": "Working session",
+                "desc": "Bring one specific problem — a design review, a project plan. We work through it together.",
+                "dur": "60 min · Choose →",
+                "subject": "Working session with Nexabie"
+            }
+        ],
+        "form_title": "Send a message",
+        "form_hint": "Or email us directly — whichever you prefer.",
+        "services_select": [
+            {
+                "value": "consultation",
+                "label": "Consultation — clarify my idea"
+            },
+            {
+                "value": "design",
+                "label": "Design — see it before it’s built"
+            },
+            {
+                "value": "development",
+                "label": "Development — build it"
+            },
+            {
+                "value": "product",
+                "label": "A product partnership"
+            },
+            {
+                "value": "other",
+                "label": "Something else"
+            }
+        ],
+        "labels": {
+            "name": "Name",
+            "email": "Email",
+            "service": "What do you need?",
+            "message": "About your idea",
+            "submit": "Send message"
+        },
+        "placeholders": {
+            "name": "Your name",
+            "email": "you@company.com",
+            "message": "A few sentences are enough — what is it, and who is it for?"
+        },
+        "privacy_note": "By sending, you agree we may reply to your enquiry. See our",
+        "success": "Thanks — your message is on its way. We’ll reply within 24 hours.",
+        "error": "Something went wrong sending your message. Please email us directly instead."
+    },
+    "privacy": {
+        "title_a": "Privacy,",
+        "title_b": "in plain language.",
+        "lead": "Last updated: November 2026. This is a placeholder policy — have your lawyer review it before launch.",
+        "sections": [
+            {
+                "q": "What we collect",
+                "a": "When you contact us (form or email), we receive whatever you choose to share — typically your name, email address and a description of your idea. We don’t collect sensitive personal data through this website."
+            },
+            {
+                "q": "How we use it",
+                "a": "Only to reply to your enquiry, prepare for a call, and — if you become a client — to deliver the project. We never sell your data or share it with advertisers."
+            },
+            {
+                "q": "Analytics & cookies",
+                "a": "This site doesn’t set advertising cookies. If you add analytics later (e.g. a privacy-friendly tool), update this section and add a consent notice."
+            },
+            {
+                "q": "How long we keep it",
+                "a": "Enquiry emails are kept for up to 24 months, then deleted. Client project records are kept as long as legally required for accounting."
+            },
+            {
+                "q": "Your rights",
+                "a": "You can ask what we hold about you, request correction or deletion at any time — email hello@nexabie.co.tz."
+            }
+        ]
+    }
+}

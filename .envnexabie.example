@@ -1,0 +1,14 @@
+# Nexabie site environment — copy to `.envnexabie`.
+#
+# On the server the real file lives ONE STEP BACK from the site folder
+# (outside the web root, never downloadable):
+#     $HOME/.envnexabie          <- chmod 600, created once, never overwritten
+#
+# For local development you can instead place `.envnexabie`
+# in the project root (this file's folder).
+#
+# This example file IS safe to commit to Git.
+
+SITE_URL=https://nexabie.co.tz
+ADMIN_USER=admin
+UPLOAD_MAX_MB=5

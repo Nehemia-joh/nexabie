@@ -1,0 +1,76 @@
+---
+# ----------------------------------------------------------------------
+# cPanel Git deployment for the Nexabie website (nexabie.co.tz)
+# PHP pages + JSON-file CMS — no database required.
+#
+# Server layout:
+#
+#   $HOME/nexabie.co.tz/          <- document root for nexabie.co.tz
+#     index.php, work.php, ...    <- site pages
+#     config.php                  <- site config
+#     includes/ css/ js/ admin/   <- code (always refreshed on deploy)
+#     data/                       <- CMS content (JSON) — PRESERVED on redeploy
+#       content.json  settings.json  auth.json  inquiries.json
+#     uploads/                    <- images — PRESERVED on redeploy
+#
+# In cPanel -> Domains, confirm the document root for nexabie.co.tz.
+# If it shows $HOME/public_html instead of $HOME/nexabie.co.tz,
+# change DEPLOYPATH below to $HOME/public_html.
+#
+# Redeploy safety:
+#   - data/*.json already on the server is NEVER overwritten, so your CMS
+#     wording, palette, admin password and inquiries survive every deploy
+#   - uploads/* already on the server is NEVER overwritten or deleted
+#   - stale static *.html pages are removed so the PHP pages are served
+#   - the old joomla/ wp/ cgi-bin/ folders (if present) are left untouched
+#   - .envnexabie lives ONE STEP BACK (outside the site): $HOME/.envnexabie
+#     is created once from .envnexabie.example and never overwritten
+# ----------------------------------------------------------------------
+
+deployment:
+  tasks:
+    - export DEPLOYPATH="$HOME/public_html"
+    - export REPOPATH="$PWD"
+
+    # Fail clearly if the repository root is not this project folder.
+    - /bin/sh -c 'if [ ! -f "$REPOPATH/index.php" ] || [ ! -d "$REPOPATH/includes" ]; then echo "ERROR - REPOPATH=$REPOPATH does not contain index.php and includes/. Check the paths in .cpanel.yml."; exit 1; fi'
+
+    - /bin/mkdir -p "$DEPLOYPATH"
+    - /bin/mkdir -p "$DEPLOYPATH/data"
+    - /bin/mkdir -p "$DEPLOYPATH/uploads"
+
+    # Application code: pages, config, includes, css, js, admin.
+    # Skipped automatically when the repo is already checked out at the deploy path.
+    - /bin/sh -c 'if [ "$REPOPATH" != "$DEPLOYPATH" ]; then /bin/cp -R "$REPOPATH"/*.php "$DEPLOYPATH"/ && /bin/cp -R "$REPOPATH/includes" "$REPOPATH/css" "$REPOPATH/js" "$REPOPATH/admin" "$DEPLOYPATH"/; fi'
+
+    # CMS data: seed data/*.json ONLY when missing on the server, so content
+    # edits, palette changes, the admin password and inquiries are preserved.
+    - /bin/sh -c 'for f in content.json settings.json auth.json inquiries.json; do if [ ! -f "$DEPLOYPATH/data/$f" ] && [ -f "$REPOPATH/data/$f" ]; then /bin/cp "$REPOPATH/data/$f" "$DEPLOYPATH/data/$f"; fi; done'
+
+    # Security rules for data/ (never web-readable) and uploads/ (no PHP execution).
+    - /bin/sh -c 'if [ -f "$REPOPATH/data/.htaccess" ]; then /bin/cp "$REPOPATH/data/.htaccess" "$DEPLOYPATH/data/.htaccess"; fi'
+    - /bin/sh -c 'if [ -f "$REPOPATH/uploads/.htaccess" ]; then /bin/cp "$REPOPATH/uploads/.htaccess" "$DEPLOYPATH/uploads/.htaccess"; fi'
+
+    # Root .htaccess: blocks direct downloads of dotfiles and sets DirectoryIndex.
+    - /bin/sh -c 'if [ -f "$REPOPATH/.htaccess" ]; then /bin/cp "$REPOPATH/.htaccess" "$DEPLOYPATH/.htaccess"; fi'
+
+    # ----------------------------------------------------------------------
+    # .envnexabie — environment file, ONE STEP BACK from the site folder
+    # (outside the web root: $HOME/.envnexabie, never downloadable).
+    # Created once from the example; the real file is NEVER overwritten.
+    # ----------------------------------------------------------------------
+    - /bin/sh -c 'if [ ! -f "$HOME/.envnexabie" ] && [ -f "$REPOPATH/.envnexabie.example" ]; then /bin/cp "$REPOPATH/.envnexabie.example" "$HOME/.envnexabie"; echo "Created $HOME/.envnexabie from example — edit it and set chmod 600."; fi'
+    - /bin/chmod 600 "$HOME/.envnexabie" 2>/dev/null || true
+    - /bin/chmod 644 "$REPOPATH/.envnexabie.example" 2>/dev/null || true
+
+    # Remove stale static pages from earlier deploys (index.html would
+    # otherwise shadow index.php in Apache's DirectoryIndex order).
+    - /bin/sh -c 'for f in index work services about contact privacy; do /bin/rm -f "$DEPLOYPATH/$f.html"; done'
+
+    # Permissions: files 644, directories 755 (owner-writable so the CMS
+    # can save JSON and accept uploads).
+    - /bin/find "$DEPLOYPATH" -maxdepth 1 -type f -name '*.php' -exec /bin/chmod 644 {} \;
+    - /bin/find "$DEPLOYPATH/includes" "$DEPLOYPATH/css" "$DEPLOYPATH/js" "$DEPLOYPATH/admin" -type f -exec /bin/chmod 644 {} \;
+    - /bin/find "$DEPLOYPATH/includes" "$DEPLOYPATH/css" "$DEPLOYPATH/js" "$DEPLOYPATH/admin" "$DEPLOYPATH/data" "$DEPLOYPATH/uploads" -type d -exec /bin/chmod 755 {} \;
+    - /bin/find "$DEPLOYPATH/data" -type f -exec /bin/chmod 644 {} \;
+    - /bin/sh -c 'if [ -f "$DEPLOYPATH/config.php" ]; then /bin/chmod 644 "$DEPLOYPATH/config.php"; fi'

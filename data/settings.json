@@ -1,0 +1,18 @@
+{
+  "palette": {
+    "paper": "#fafafa",
+    "paper_l": "#ffffff",
+    "stone": "#eef2f6",
+    "stone_l": "#f5f7fa",
+    "line": "#dfe4ea",
+    "line_soft": "#ebeff3",
+    "ink": "#0b0b0a",
+    "ink_2": "#33383e",
+    "ink_3": "#6d7680",
+    "accent": "#1775bb",
+    "accent_dark": "#0e5a91",
+    "accent_bright": "#3ea0e3",
+    "accent_tint": "#e8f4fd",
+    "red": "#f53030"
+  }
+}

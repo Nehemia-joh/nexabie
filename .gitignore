@@ -1,0 +1,7 @@
+# The real env file lives one step above the site folder on the server
+# ($HOME/.envnexabie) and must never be committed.
+.envnexabie
+
+# cPanel / editor noise
+.DS_Store
+*.log
