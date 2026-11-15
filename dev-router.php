@@ -20,7 +20,7 @@ if (str_starts_with($path, '/data/') || preg_match('#/\.#', $path)) {
 
 // Real files (assets, css, js, direct .php) → let the built-in server handle
 // them. Direct .php hits still hit the in-PHP guards (login.php etc. → 404).
-if ($path !== '/' && preg_match('/\.(php|css|js|svg|png|jpe?g|webp|gif|ico|json|txt|xml|webmanifest|map)$/', $path)) {
+if ($path !== '/' && preg_match('/\.(php|css|js|svg|png|jpe?g|webp|gif|ico|json|txt|xml|webmanifest|map|ttf|otf|woff2?)$/i', $path)) {
     return false;
 }
 

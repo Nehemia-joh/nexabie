@@ -6,6 +6,11 @@
   box-sizing: border-box;
 }
 
+:root {
+  --font-sans: "Instrument Sans", system-ui, -apple-system, sans-serif;
+  --font-display: "Sneaker", "Instrument Sans", system-ui, sans-serif;
+}
+
 body.admin {
   margin: 0;
   background: var(--paper, #fafafa);
