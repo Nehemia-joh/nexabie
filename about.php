@@ -12,13 +12,13 @@ require __DIR__ . '/includes/header.php';
 ?>
 
     <section class="page-hero wrap">
-      <p class="breadcrumb"><a href="index.php"><?= e($brand['name']) ?></a> — About</p>
+      <p class="breadcrumb"><a href="index"><?= e($brand['name']) ?></a> — About</p>
       <div class="about-grid">
         <div>
           <h1 class="display"><?= e($a['title_a']) ?> <span class="serif-em"><?= e($a['title_b']) ?></span></h1>
           <p class="lead"><?= e($a['lead']) ?></p>
           <div class="hero-cta" style="margin-top:28px">
-            <a class="btn btn-primary" href="contact.php"><?= e($a['cta_primary']) ?></a>
+            <a class="btn btn-primary" href="contact"><?= e($a['cta_primary']) ?></a>
             <a class="btn btn-ghost" href="#experience"><?= e($a['cta_secondary']) ?></a>
           </div>
         </div>
@@ -97,8 +97,8 @@ require __DIR__ . '/includes/header.php';
           <p class="lead">Book a call or email <a href="mailto:<?= e($brand['email']) ?>" style="color:inherit"><?= e($brand['email']) ?></a></p>
         </div>
         <div class="cta-actions">
-          <a class="btn btn-primary" href="contact.php">Book a call</a>
-          <a class="btn btn-ghost" href="work.php">See the work</a>
+          <a class="btn btn-primary" href="contact">Book a call</a>
+          <a class="btn btn-ghost" href="work">See the work</a>
         </div>
       </div>
     </section>

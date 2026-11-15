@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($action === 'reset') {
         save_json('settings.json', ['palette' => default_palette()]);
-        header('Location: index.php?page=settings&saved=1');
+        header('Location: settings&saved=1');
         exit;
     }
 
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
         save_json('settings.json', $settings);
-        header('Location: index.php?page=settings&saved=1#palette');
+        header('Location: settings&saved=1#palette');
         exit;
     }
 
@@ -55,19 +55,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $confirm = (string) ($_POST['confirm'] ?? '');
         $auth = load_json('auth.json', []);
         if (empty($auth['password_hash']) || !password_verify($current, (string) $auth['password_hash'])) {
-            header('Location: index.php?page=settings&error=' . rawurlencode('Current password is wrong.'));
+            header('Location: settings&error=' . rawurlencode('Current password is wrong.'));
             exit;
         }
         if (strlen($new) < 8) {
-            header('Location: index.php?page=settings&error=' . rawurlencode('New password must be at least 8 characters.'));
+            header('Location: settings&error=' . rawurlencode('New password must be at least 8 characters.'));
             exit;
         }
         if ($new !== $confirm) {
-            header('Location: index.php?page=settings&error=' . rawurlencode('New passwords do not match.'));
+            header('Location: settings&error=' . rawurlencode('New passwords do not match.'));
             exit;
         }
         set_password($new);
-        header('Location: index.php?page=settings&saved=1');
+        header('Location: settings&saved=1');
         exit;
     }
 }
@@ -81,7 +81,7 @@ admin_head('Settings', 'settings');
 <h2 id="palette">Colour palette</h2>
 <p class="muted">Changes apply to the whole site instantly. Scarlet Red is also used at 10% opacity for hover washes.</p>
 
-<form class="form" method="post" action="index.php?page=settings">
+<form class="form" method="post" action="settings">
   <?= csrf_field() ?>
   <input type="hidden" name="action" value="palette">
   <div class="swatches">
@@ -100,14 +100,14 @@ admin_head('Settings', 'settings');
   </div>
 </form>
 
-<form class="form inline-form" method="post" action="index.php?page=settings" onsubmit="return confirm('Reset the palette to the Sky Blue / Cloud White / Scarlet Red defaults?')">
+<form class="form inline-form" method="post" action="settings" onsubmit="return confirm('Reset the palette to the Sky Blue / Cloud White / Scarlet Red defaults?')">
   <?= csrf_field() ?>
   <input type="hidden" name="action" value="reset">
   <button class="btn-a" type="submit">Reset to default palette</button>
 </form>
 
 <h2>Admin password</h2>
-<form class="form narrow" method="post" action="index.php?page=settings">
+<form class="form narrow" method="post" action="settings">
   <?= csrf_field() ?>
   <input type="hidden" name="action" value="password">
   <div class="fld"><label for="cur">Current password</label><input id="cur" name="current" type="password" autocomplete="current-password" required></div>

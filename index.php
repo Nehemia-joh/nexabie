@@ -28,8 +28,8 @@ require __DIR__ . '/includes/header.php';
       </h1>
       <p class="lead hero-lead"><?= e($h['lead']) ?></p>
       <div class="hero-cta">
-        <a class="btn btn-primary" href="contact.php"><?= e($h['cta_primary']) ?></a>
-        <a class="btn btn-ghost" href="work.php"><?= e($h['cta_secondary']) ?></a>
+        <a class="btn btn-primary" href="contact"><?= e($h['cta_primary']) ?></a>
+        <a class="btn btn-ghost" href="work"><?= e($h['cta_secondary']) ?></a>
       </div>
       <div class="hero-note">
         <span><?= e($h['note1']) ?></span>
@@ -61,7 +61,7 @@ require __DIR__ . '/includes/header.php';
     <section class="section wrap" aria-labelledby="work-title">
       <div class="eyebrow">
         <span><span class="num">01</span> · <?= e($h['work_eyebrow']) ?></span>
-        <a class="link-arrow" href="work.php"><?= e($h['work_link']) ?></a>
+        <a class="link-arrow" href="work"><?= e($h['work_link']) ?></a>
       </div>
       <div class="section-head">
         <h2 class="h2" id="work-title"><?= e($h['work_title_a']) ?><br><span class="serif-em"><?= e($h['work_title_b']) ?></span></h2>
@@ -78,7 +78,7 @@ require __DIR__ . '/includes/header.php';
         foreach ($featured as $i => $p):
             $wide = $i === 0;
         ?>
-        <a class="work-card reveal<?= $wide ? ' wide' : '' ?>" href="<?= e($p['href'] ?? ('work.php#' . $p['id'])) ?>" data-category="<?= e($p['category']) ?>">
+        <a class="work-card reveal<?= $wide ? ' wide' : '' ?>" href="<?= e($p['href'] ?? ('work#' . $p['id'])) ?>" data-category="<?= e($p['category']) ?>">
           <div class="work-cover">
             <?php if (!empty($p['image'])): ?>
               <img src="<?= e($p['image']) ?>" alt="<?= e($p['title']) ?>" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0">
@@ -104,7 +104,7 @@ require __DIR__ . '/includes/header.php';
     <section class="section section-rule wrap" aria-labelledby="services-title">
       <div class="eyebrow">
         <span><span class="num">02</span> · <?= e($h['services_eyebrow']) ?></span>
-        <a class="link-arrow" href="services.php"><?= e($h['services_link']) ?></a>
+        <a class="link-arrow" href="services"><?= e($h['services_link']) ?></a>
       </div>
       <div class="section-head">
         <h2 class="h2" id="services-title"><?= e($h['services_title_a']) ?><br><span class="serif-em"><?= e($h['services_title_b']) ?></span></h2>
@@ -122,7 +122,7 @@ require __DIR__ . '/includes/header.php';
             <ul>
               <?php foreach ($eng['points'] as $pt): ?><li><?= e($pt) ?></li><?php endforeach; ?>
             </ul>
-            <a class="link-arrow" href="contact.php?service=<?= e(strtolower($eng['name'])) ?>"><?= e($eng['cta']) ?></a>
+            <a class="link-arrow" href="contact?service=<?= e(strtolower($eng['name'])) ?>"><?= e($eng['cta']) ?></a>
           </div>
         </article>
         <?php endforeach; ?>
@@ -140,7 +140,7 @@ require __DIR__ . '/includes/header.php';
         <aside class="quote-aside">
           <h4><?= e($h['aside_title']) ?></h4>
           <p><?= e($h['aside_text']) ?></p>
-          <a class="link-arrow" href="contact.php"><?= e($h['aside_link']) ?></a>
+          <a class="link-arrow" href="contact"><?= e($h['aside_link']) ?></a>
         </aside>
       </div>
     </section>
@@ -153,8 +153,8 @@ require __DIR__ . '/includes/header.php';
           <p class="lead">Book a call or email <a href="mailto:<?= e($brand['email']) ?>" style="color:inherit"><?= e($brand['email']) ?></a></p>
         </div>
         <div class="cta-actions">
-          <a class="btn btn-primary" href="contact.php">Book a call</a>
-          <a class="btn btn-ghost" href="work.php">See the work</a>
+          <a class="btn btn-primary" href="contact">Book a call</a>
+          <a class="btn btn-ghost" href="work">See the work</a>
         </div>
       </div>
     </section>

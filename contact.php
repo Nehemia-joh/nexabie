@@ -67,7 +67,7 @@ require __DIR__ . '/includes/header.php';
 ?>
 
     <section class="page-hero wrap">
-      <p class="breadcrumb"><a href="index.php"><?= e($brand['name']) ?></a> — Contact</p>
+      <p class="breadcrumb"><a href="index"><?= e($brand['name']) ?></a> — Contact</p>
       <h1 class="display"><?= e($ct['title_a']) ?> <span class="serif-em"><?= e($ct['title_b']) ?></span></h1>
       <p class="lead"><?= e($ct['lead']) ?></p>
       <div class="hero-note">
@@ -117,7 +117,7 @@ require __DIR__ . '/includes/header.php';
           <h3 class="h3"><?= e($ct['form_title']) ?></h3>
           <p class="hint"><?= e($ct['form_hint']) ?></p>
 
-          <form id="contact-form" method="post" action="contact.php" novalidate>
+          <form id="contact-form" method="post" action="contact" novalidate>
             <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
             <div class="field">
               <label for="field-name"><?= e($ct['labels']['name']) ?></label>
@@ -143,7 +143,7 @@ require __DIR__ . '/includes/header.php';
               <textarea id="field-message" name="message" required placeholder="<?= e($ct['placeholders']['message']) ?>"><?= e($_POST['message'] ?? '') ?></textarea>
             </div>
             <button class="btn btn-primary" type="submit" style="width:100%"><?= e($ct['labels']['submit']) ?></button>
-            <p class="form-note"><?= e($ct['privacy_note']) ?> <a href="privacy.php">privacy policy</a>.</p>
+            <p class="form-note"><?= e($ct['privacy_note']) ?> <a href="privacy">privacy policy</a>.</p>
           </form>
         </div>
       </div>

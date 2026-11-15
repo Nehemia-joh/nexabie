@@ -167,7 +167,7 @@ function logout(): void
 function require_login(): void
 {
     if (!is_logged_in()) {
-        header('Location: index.php?page=login');
+        header('Location: login');
         exit;
     }
 }

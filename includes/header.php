@@ -31,18 +31,18 @@ $pageKey = preg_replace('/\.php$/', '', $currentPage);
 
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="brand" href="index.php" aria-label="<?= e($brand['name'] ?? 'Nexabie') ?> home">
+      <a class="brand" href="index" aria-label="<?= e($brand['name'] ?? 'Nexabie') ?> home">
         <span class="brand-mark" aria-hidden="true"><?= e($brand['mark'] ?? 'n') ?></span>
         <?= e($brand['name'] ?? 'Nexabie') ?>
       </a>
       <nav class="nav" id="site-nav" aria-label="Primary">
-        <a href="work.php"<?= $pageKey === 'work' ? ' aria-current="page"' : '' ?>>Work</a>
-        <a href="services.php"<?= $pageKey === 'services' ? ' aria-current="page"' : '' ?>>Services</a>
-        <a href="about.php"<?= $pageKey === 'about' ? ' aria-current="page"' : '' ?>>About</a>
-        <a href="contact.php" class="btn btn-primary"<?= $pageKey === 'contact' ? ' aria-current="page"' : '' ?>>Start a project</a>
+        <a href="work"<?= $pageKey === 'work' ? ' aria-current="page"' : '' ?>>Work</a>
+        <a href="services"<?= $pageKey === 'services' ? ' aria-current="page"' : '' ?>>Services</a>
+        <a href="about"<?= $pageKey === 'about' ? ' aria-current="page"' : '' ?>>About</a>
+        <a href="contact" class="btn btn-primary"<?= $pageKey === 'contact' ? ' aria-current="page"' : '' ?>>Start a project</a>
       </nav>
       <div class="header-actions">
-        <a href="contact.php" class="btn btn-primary">Start a project</a>
+        <a href="contact" class="btn btn-primary">Start a project</a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
           <span class="menu-label">Menu</span>
         </button>

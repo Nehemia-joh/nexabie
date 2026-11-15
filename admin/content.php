@@ -357,7 +357,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     coerce_values($sections[$section]['fields'], $data);
     $content[$section] = $data;
     save_json('content.json', $content);
-    header('Location: index.php?page=content&section=' . rawurlencode($section) . '&saved=1');
+    header('Location: content?section=' . rawurlencode($section) . '&saved=1');
     exit;
 }
 
@@ -369,11 +369,11 @@ admin_head('Content — ' . $sections[$section]['label'], 'content');
 
 <div class="tabs">
   <?php foreach ($sections as $key => $s): ?>
-    <a class="tab<?= $key === $section ? ' on' : '' ?>" href="index.php?page=content&section=<?= e($key) ?>"><?= e($s['label']) ?></a>
+    <a class="tab<?= $key === $section ? ' on' : '' ?>" href="content?section=<?= e($key) ?>"><?= e($s['label']) ?></a>
   <?php endforeach; ?>
 </div>
 
-<form class="form" method="post" action="index.php?page=content&section=<?= e($section) ?>">
+<form class="form" method="post" action="content?section=<?= e($section) ?>">
   <?= csrf_field() ?>
   <input type="hidden" name="section" value="<?= e($section) ?>">
 
@@ -383,7 +383,7 @@ admin_head('Content — ' . $sections[$section]['label'], 'content');
 
   <div class="form-actions">
     <button class="btn-a primary" type="submit">Save changes</button>
-    <a class="btn-a" href="../index.php" target="_blank" rel="noopener">View site ↗</a>
+    <a class="btn-a" href="../" target="_blank" rel="noopener">View site ↗</a>
   </div>
 </form>
 

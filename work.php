@@ -12,7 +12,7 @@ require __DIR__ . '/includes/header.php';
 ?>
 
     <section class="page-hero wrap">
-      <p class="breadcrumb"><a href="index.php"><?= e($brand['name']) ?></a> — Work</p>
+      <p class="breadcrumb"><a href="index"><?= e($brand['name']) ?></a> — Work</p>
       <h1 class="display"><?= e($w['title_a']) ?> <span class="serif-em"><?= e($w['title_b']) ?></span></h1>
       <p class="lead"><?= e($w['lead']) ?></p>
     </section>
@@ -51,7 +51,7 @@ require __DIR__ . '/includes/header.php';
             <span class="kicker" style="font-size:13.5px;font-weight:550;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em"><?= e($w['next_kicker']) ?></span>
             <h3 class="h3" style="margin:10px 0 8px"><?= e($w['next_title']) ?></h3>
             <p class="muted" style="margin:0 0 18px"><?= e($w['next_text']) ?></p>
-            <a class="btn btn-primary" href="contact.php"><?= e($w['next_cta']) ?></a>
+            <a class="btn btn-primary" href="contact"><?= e($w['next_cta']) ?></a>
           </div>
         </div>
       </div>

@@ -5,8 +5,18 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
+# Canonical extensionless URLs: /work.php → /work (query string kept).
+# THE_REQUEST matches only real browser requests, so internal rewrites
+# never trigger a redirect loop.
+RewriteCond %{THE_REQUEST} \s/(index|work|services|about|contact|privacy)\.php[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# Extensionless → .php (internal): /work → work.php, / → index.php
+RewriteRule ^$ index.php [L]
+RewriteRule ^(index|work|services|about|contact|privacy)/?$ $1.php [L]
+
 # Admin front controller: every admin URL runs through admin/index.php
-# (pretty URLs — /admin/login …; the canonical links are index.php?page=…)
+# (/admin, /admin/login, /admin/content …)
 RewriteRule ^admin/?$ admin/index.php [L,QSA]
 RewriteRule ^admin/([a-z]+)/?$ admin/index.php?page=$1 [L,QSA]
 

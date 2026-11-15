@@ -17,22 +17,22 @@ admin_head('Dashboard', 'dashboard');
 ?>
 
 <div class="cards">
-  <a class="card" href="index.php?page=content">
+  <a class="card" href="content">
     <span class="big"><?= count($projects) ?></span>
     <span>Projects &amp; pages</span>
     <em>Edit wording →</em>
   </a>
-  <a class="card" href="index.php?page=media">
+  <a class="card" href="media">
     <span class="big"><?= count($uploads) ?></span>
     <span>Images uploaded</span>
     <em>Manage media →</em>
   </a>
-  <a class="card" href="index.php?page=inbox">
+  <a class="card" href="inbox">
     <span class="big"><?= count($inquiries) ?></span>
     <span>Messages received</span>
     <em>Open inbox →</em>
   </a>
-  <a class="card" href="index.php?page=settings">
+  <a class="card" href="settings">
     <span class="big">🎨</span>
     <span>Palette &amp; settings</span>
     <em>Change colours →</em>
@@ -41,12 +41,12 @@ admin_head('Dashboard', 'dashboard');
 
 <h2>Quick actions</h2>
 <div class="quick">
-  <a class="btn-a" href="index.php?page=content&amp;section=home">Homepage wording</a>
-  <a class="btn-a" href="index.php?page=content&amp;section=work">Projects</a>
-  <a class="btn-a" href="index.php?page=content&amp;section=services">Services</a>
-  <a class="btn-a" href="index.php?page=content&amp;section=brand">Brand &amp; contact</a>
-  <a class="btn-a" href="index.php?page=settings#palette">Colour palette</a>
-  <a class="btn-a" href="../index.php" target="_blank" rel="noopener">View site ↗</a>
+  <a class="btn-a" href="content?section=home">Homepage wording</a>
+  <a class="btn-a" href="content?section=work">Projects</a>
+  <a class="btn-a" href="content?section=services">Services</a>
+  <a class="btn-a" href="content?section=brand">Brand &amp; contact</a>
+  <a class="btn-a" href="settings#palette">Colour palette</a>
+  <a class="btn-a" href="../" target="_blank" rel="noopener">View site ↗</a>
 </div>
 
 <?php if ($inquiries): ?>

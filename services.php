@@ -11,7 +11,7 @@ require __DIR__ . '/includes/header.php';
 ?>
 
     <section class="page-hero wrap">
-      <p class="breadcrumb"><a href="index.php"><?= e($brand['name']) ?></a> — Services</p>
+      <p class="breadcrumb"><a href="index"><?= e($brand['name']) ?></a> — Services</p>
       <h1 class="display"><?= e($s['title_a']) ?> <span class="serif-em"><?= e($s['title_b']) ?></span></h1>
       <p class="lead"><?= e($s['lead']) ?></p>
     </section>
@@ -33,7 +33,7 @@ require __DIR__ . '/includes/header.php';
             <ul>
               <?php foreach ($eng['points'] as $pt): ?><li><?= e($pt) ?></li><?php endforeach; ?>
             </ul>
-            <a class="link-arrow" href="contact.php?service=<?= e(strtolower($eng['name'])) ?>"><?= e($eng['cta']) ?></a>
+            <a class="link-arrow" href="contact?service=<?= e(strtolower($eng['name'])) ?>"><?= e($eng['cta']) ?></a>
           </div>
         </article>
         <?php endforeach; ?>
@@ -81,8 +81,8 @@ require __DIR__ . '/includes/header.php';
           <p class="lead">Or email <a href="mailto:<?= e($brand['email']) ?>" style="color:inherit"><?= e($brand['email']) ?></a></p>
         </div>
         <div class="cta-actions">
-          <a class="btn btn-primary" href="contact.php?service=consultation"><?= e($s['cta_button']) ?></a>
-          <a class="btn btn-ghost" href="work.php">See the work</a>
+          <a class="btn btn-primary" href="contact?service=consultation"><?= e($s['cta_button']) ?></a>
+          <a class="btn btn-ghost" href="work">See the work</a>
         </div>
       </div>
     </section>

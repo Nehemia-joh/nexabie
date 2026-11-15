@@ -8,5 +8,5 @@ if (!defined('NEXABIE_ROUTER')) {
 
 require_once dirname(__DIR__) . '/includes/functions.php';
 logout();
-header('Location: index.php?page=login');
+header('Location: login');
 exit;

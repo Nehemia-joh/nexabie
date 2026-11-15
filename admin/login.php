@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = trim((string) ($_POST['username'] ?? ''));
     $pass = (string) ($_POST['password'] ?? '');
     if (attempt_login($user, $pass)) {
-        header('Location: index.php');
+        header('Location: ./');
         exit;
     }
     $error = 'Wrong username or password.';
@@ -38,7 +38,7 @@ $brand = content()['brand'] ?? [];
   <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body class="admin login-page">
-  <form class="login-card" method="post" action="index.php?page=login">
+  <form class="login-card" method="post" action="login">
     <div class="admin-brand" style="justify-content:center;margin-bottom:6px">
       <span class="mark"><?= e($brand['mark'] ?? 'n') ?></span>
       <?= e($brand['name'] ?? 'Nexabie') ?> <span class="tag">CMS</span>

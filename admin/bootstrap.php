@@ -50,18 +50,18 @@ function admin_head(string $title, string $active): void
 </head>
 <body class="admin">
   <header class="admin-bar">
-    <a class="admin-brand" href="index.php">
+    <a class="admin-brand" href="./">
       <span class="mark"><?= e($brand['mark'] ?? 'n') ?></span>
       <?= e($brand['name'] ?? 'Nexabie') ?> <span class="tag">CMS</span>
     </a>
     <nav>
-      <a href="index.php" class="<?= $active === 'dashboard' ? 'on' : '' ?>">Dashboard</a>
-      <a href="index.php?page=content" class="<?= $active === 'content' ? 'on' : '' ?>">Content</a>
-      <a href="index.php?page=media" class="<?= $active === 'media' ? 'on' : '' ?>">Media</a>
-      <a href="index.php?page=inbox" class="<?= $active === 'inbox' ? 'on' : '' ?>">Inbox<?= $count ? ' <span class="pill">' . $count . '</span>' : '' ?></a>
-      <a href="index.php?page=settings" class="<?= $active === 'settings' ? 'on' : '' ?>">Settings</a>
-      <a href="../index.php" target="_blank" rel="noopener" class="ghost">View site ↗</a>
-      <a href="index.php?page=logout" class="ghost">Log out</a>
+      <a href="./" class="<?= $active === 'dashboard' ? 'on' : '' ?>">Dashboard</a>
+      <a href="content" class="<?= $active === 'content' ? 'on' : '' ?>">Content</a>
+      <a href="media" class="<?= $active === 'media' ? 'on' : '' ?>">Media</a>
+      <a href="inbox" class="<?= $active === 'inbox' ? 'on' : '' ?>">Inbox<?= $count ? ' <span class="pill">' . $count . '</span>' : '' ?></a>
+      <a href="settings" class="<?= $active === 'settings' ? 'on' : '' ?>">Settings</a>
+      <a href="../" target="_blank" rel="noopener" class="ghost">View site ↗</a>
+      <a href="logout" class="ghost">Log out</a>
     </nav>
   </header>
   <main class="admin-main">
