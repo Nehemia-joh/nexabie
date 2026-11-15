@@ -12,23 +12,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     csrf_verify();
     $action = (string) ($_POST['action'] ?? '');
     if ($action === 'delete_one') {
-        $all = load_json('inquiries.json', []);
-        $idx = (int) ($_POST['index'] ?? -1);
-        if (isset($all[$idx])) {
-            unset($all[$idx]);
-            save_json('inquiries.json', array_values($all));
-        }
+        delete_inquiry(isset($_POST['id']) ? (int) $_POST['id'] : null, (int) ($_POST['index'] ?? -1));
         header('Location: inbox&saved=1');
         exit;
     }
     if ($action === 'clear') {
-        save_json('inquiries.json', []);
+        clear_inquiries();
         header('Location: inbox&saved=1');
         exit;
     }
 }
 
-$inquiries = load_json('inquiries.json', []);
+$inquiries = load_inquiries();
 
 admin_head('Inbox', 'inbox');
 ?>
@@ -55,6 +50,7 @@ admin_head('Inbox', 'inbox');
       <form method="post" action="inbox" onsubmit="return confirm('Delete this message?')">
         <?= csrf_field() ?>
         <input type="hidden" name="action" value="delete_one">
+        <input type="hidden" name="id" value="<?= (int) ($row['id'] ?? 0) ?>">
         <input type="hidden" name="index" value="<?= (int) $i ?>">
         <button class="btn-x" type="submit" title="Delete">×</button>
       </form>

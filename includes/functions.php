@@ -243,13 +243,280 @@ function list_uploads(): array
     return $out;
 }
 
-/* ---------- Inquiries ---------- */
+/* ---------- Inquiries (MySQL when DB_NAME is set, data/inquiries.json otherwise) ---------- */
+
+function db(): ?PDO
+{
+    static $pdo = false; // false = not tried yet, null = unavailable
+    if ($pdo !== false) {
+        return $pdo;
+    }
+    $pdo = null;
+    $cfg = site_config()['db'] ?? [];
+    if (($cfg['name'] ?? '') === '') {
+        return null;
+    }
+    try {
+        $dsn = 'mysql:host=' . $cfg['host'] . ';port=' . $cfg['port']
+            . ';dbname=' . $cfg['name'] . ';charset=utf8mb4';
+        $pdo = new PDO($dsn, $cfg['user'], $cfg['pass'], [
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES   => false,
+        ]);
+        $pdo->exec(
+            'CREATE TABLE IF NOT EXISTS inquiries (
+                id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+                `date` VARCHAR(32) NOT NULL DEFAULT "",
+                name VARCHAR(190) NOT NULL DEFAULT "",
+                email VARCHAR(190) NOT NULL DEFAULT "",
+                service VARCHAR(120) NOT NULL DEFAULT "",
+                message TEXT NOT NULL,
+                ip VARCHAR(45) NOT NULL DEFAULT "",
+                PRIMARY KEY (id)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci'
+        );
+        // Flush any messages that were spilled into the JSON fallback
+        // (e.g. while MySQL was unreachable) into the database.
+        $old = load_json('inquiries.json', []);
+        if ($old) {
+            $ins = $pdo->prepare('INSERT INTO inquiries (`date`, name, email, service, message, ip) VALUES (?,?,?,?,?,?)');
+            foreach (array_reverse($old) as $row) { // JSON is newest-first; insert oldest first
+                $ins->execute([
+                    $row['date'] ?? '',
+                    $row['name'] ?? '',
+                    $row['email'] ?? '',
+                    $row['service'] ?? '',
+                    $row['message'] ?? '',
+                    $row['ip'] ?? '',
+                ]);
+            }
+            save_json('inquiries.json', []);
+        }
+    } catch (Throwable $e) {
+        error_log('Nexabie: MySQL unavailable, using JSON inbox — ' . $e->getMessage());
+        $pdo = null;
+    }
+    return $pdo;
+}
+
+function load_inquiries(): array
+{
+    $pdo = db();
+    if ($pdo !== null) {
+        return $pdo->query('SELECT id, `date`, name, email, service, message, ip FROM inquiries ORDER BY id DESC')->fetchAll();
+    }
+    return load_json('inquiries.json', []);
+}
 
 function save_inquiry(array $row): void
 {
+    $pdo = db();
+    if ($pdo !== null) {
+        $stmt = $pdo->prepare('INSERT INTO inquiries (`date`, name, email, service, message, ip) VALUES (?,?,?,?,?,?)');
+        $stmt->execute([
+            $row['date'] ?? date('c'),
+            $row['name'] ?? '',
+            $row['email'] ?? '',
+            $row['service'] ?? '',
+            $row['message'] ?? '',
+            $row['ip'] ?? '',
+        ]);
+        return;
+    }
     $all = load_json('inquiries.json', []);
     array_unshift($all, $row);
     save_json('inquiries.json', array_slice($all, 0, 500));
+}
+
+function delete_inquiry(?int $id, int $index = -1): void
+{
+    $pdo = db();
+    if ($pdo !== null) {
+        if ($id !== null && $id > 0) {
+            $stmt = $pdo->prepare('DELETE FROM inquiries WHERE id = ?');
+            $stmt->execute([$id]);
+        }
+        return;
+    }
+    $all = load_json('inquiries.json', []);
+    if (isset($all[$index])) {
+        unset($all[$index]);
+        save_json('inquiries.json', array_values($all));
+    }
+}
+
+function clear_inquiries(): void
+{
+    $pdo = db();
+    if ($pdo !== null) {
+        $pdo->exec('DELETE FROM inquiries');
+        save_json('inquiries.json', []); // drop any not-yet-flushed spillover too
+        return;
+    }
+    save_json('inquiries.json', []);
+}
+
+/* ---------- Outgoing email (SMTP when configured, PHP mail() otherwise) ---------- */
+
+function smtp_read($fp): array
+{
+    $text = '';
+    $code = 0;
+    while (($line = fgets($fp, 515)) !== false) {
+        $text .= $line;
+        if (strlen($line) < 4 || $line[3] !== '-') {
+            $code = (int) substr($line, 0, 3);
+            break;
+        }
+    }
+    return ['code' => $code, 'text' => $text];
+}
+
+function smtp_cmd($fp, string $cmd): array
+{
+    fwrite($fp, $cmd . "\r\n");
+    return smtp_read($fp);
+}
+
+function smtp_mime_word(string $s): string
+{
+    return preg_match('/[^\x20-\x7E]/', $s) ? '=?UTF-8?B?' . base64_encode($s) . '?=' : $s;
+}
+
+function smtp_send(array $cfg, string $to, string $subject, string $body, string $fromName, string $fromAddr, string $replyTo, string $html = ''): bool
+{
+    $host = (string) $cfg['host'];
+    $port = (int) ($cfg['port'] ?? 587);
+    $user = (string) ($cfg['user'] ?? '');
+    $pass = (string) ($cfg['pass'] ?? '');
+    $from = ($cfg['from'] ?? '') !== '' ? (string) $cfg['from'] : ($user !== '' ? $user : $fromAddr);
+
+    $errno = 0;
+    $errstr = '';
+    if ($port === 465) {
+        $fp = @stream_socket_client('tls://' . $host . ':' . $port, $errno, $errstr, 8);
+    } else {
+        $fp = @fsockopen($host, $port, $errno, $errstr, 8);
+    }
+    if (!$fp) {
+        error_log("Nexabie SMTP: cannot connect to $host:$port — $errstr");
+        return false;
+    }
+    stream_set_timeout($fp, 8);
+
+    $fail = function ($fp, string $why) {
+        @fwrite($fp, "QUIT\r\n");
+        fclose($fp);
+        error_log('Nexabie SMTP: ' . $why);
+        return false;
+    };
+
+    if (smtp_read($fp)['code'] !== 220) {
+        return $fail($fp, 'no greeting');
+    }
+    $ehlo = smtp_cmd($fp, 'EHLO ' . (gethostname() ?: 'localhost'));
+    if ($ehlo['code'] !== 250) {
+        return $fail($fp, 'EHLO rejected');
+    }
+    if ($port !== 465 && stripos($ehlo['text'], 'STARTTLS') !== false) {
+        if (smtp_cmd($fp, 'STARTTLS')['code'] !== 220) {
+            return $fail($fp, 'STARTTLS rejected');
+        }
+        if (!stream_socket_enable_crypto($fp, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
+            return $fail($fp, 'TLS handshake failed');
+        }
+        $ehlo = smtp_cmd($fp, 'EHLO ' . (gethostname() ?: 'localhost'));
+        if ($ehlo['code'] !== 250) {
+            return $fail($fp, 'EHLO after STARTTLS rejected');
+        }
+    }
+    if ($user !== '') {
+        if (smtp_cmd($fp, 'AUTH LOGIN')['code'] !== 334) {
+            return $fail($fp, 'AUTH LOGIN refused');
+        }
+        if (smtp_cmd($fp, base64_encode($user))['code'] !== 334) {
+            return $fail($fp, 'username rejected');
+        }
+        if (smtp_cmd($fp, base64_encode($pass))['code'] !== 235) {
+            return $fail($fp, 'password rejected');
+        }
+    }
+    if (smtp_cmd($fp, "MAIL FROM:<$from>")['code'] !== 250) {
+        return $fail($fp, 'MAIL FROM rejected');
+    }
+    $rcpt = smtp_cmd($fp, "RCPT TO:<$to>");
+    if (!in_array($rcpt['code'], [250, 251], true)) {
+        return $fail($fp, 'recipient rejected: ' . trim($rcpt['text']));
+    }
+    if (smtp_cmd($fp, 'DATA')['code'] !== 354) {
+        return $fail($fp, 'DATA refused');
+    }
+
+    if ($html !== '') {
+        $boundary = 'b_' . bin2hex(random_bytes(12));
+        $msg = 'From: ' . smtp_mime_word($fromName) . " <$from>\r\n"
+            . "To: <$to>\r\n"
+            . 'Subject: ' . smtp_mime_word($subject) . "\r\n"
+            . ($replyTo !== '' ? "Reply-To: <$replyTo>\r\n" : '')
+            . 'Date: ' . date('r') . "\r\n"
+            . 'Message-ID: <' . bin2hex(random_bytes(8)) . '@' . (gethostname() ?: 'localhost') . ">\r\n"
+            . "MIME-Version: 1.0\r\n"
+            . "Content-Type: multipart/alternative; boundary=\"$boundary\"\r\n\r\n"
+            . "--$boundary\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n"
+            . chunk_split(base64_encode($body), 76, "\r\n")
+            . "--$boundary\r\nContent-Type: text/html; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n"
+            . chunk_split(base64_encode($html), 76, "\r\n")
+            . "--$boundary--\r\n";
+    } else {
+        $msg = 'From: ' . smtp_mime_word($fromName) . " <$from>\r\n"
+            . "To: <$to>\r\n"
+            . 'Subject: ' . smtp_mime_word($subject) . "\r\n"
+            . ($replyTo !== '' ? "Reply-To: <$replyTo>\r\n" : '')
+            . 'Date: ' . date('r') . "\r\n"
+            . 'Message-ID: <' . bin2hex(random_bytes(8)) . '@' . (gethostname() ?: 'localhost') . ">\r\n"
+            . "MIME-Version: 1.0\r\n"
+            . "Content-Type: text/plain; charset=UTF-8\r\n"
+            . "Content-Transfer-Encoding: base64\r\n"
+            . "\r\n"
+            . chunk_split(base64_encode($body), 76, "\r\n");
+    }
+    fwrite($fp, $msg . "\r\n.\r\n");
+    if (smtp_read($fp)['code'] !== 250) {
+        return $fail($fp, 'message rejected');
+    }
+    @fwrite($fp, "QUIT\r\n");
+    fclose($fp);
+    return true;
+}
+
+function send_email(string $to, string $subject, string $body, string $fromName, string $fromAddr, string $replyTo = '', string $html = ''): bool
+{
+    $smtp = site_config()['smtp'] ?? [];
+    if (($smtp['host'] ?? '') !== '') {
+        if (smtp_send($smtp, $to, $subject, $body, $fromName, $fromAddr, $replyTo, $html)) {
+            return true;
+        }
+        error_log('Nexabie: SMTP failed for ' . $to . ' — trying PHP mail()');
+    }
+    if ($html !== '') {
+        $boundary = 'b_' . bin2hex(random_bytes(12));
+        $headers = 'From: ' . smtp_mime_word($fromName) . " <$fromAddr>\r\n"
+            . ($replyTo !== '' ? "Reply-To: $replyTo\r\n" : '')
+            . "MIME-Version: 1.0\r\n"
+            . "Content-Type: multipart/alternative; boundary=\"$boundary\"\r\n";
+        $message = "--$boundary\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n"
+            . chunk_split(base64_encode($body), 76, "\r\n")
+            . "--$boundary\r\nContent-Type: text/html; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n"
+            . chunk_split(base64_encode($html), 76, "\r\n")
+            . "--$boundary--\r\n";
+        return (bool) @mail($to, $subject, $message, $headers);
+    }
+    $headers = 'From: ' . smtp_mime_word($fromName) . " <$fromAddr>\r\n"
+        . ($replyTo !== '' ? "Reply-To: $replyTo\r\n" : '')
+        . "MIME-Version: 1.0\r\n"
+        . "Content-Type: text/plain; charset=UTF-8\r\n";
+    return (bool) @mail($to, $subject, $body, $headers);
 }
 
 /* ---------- Small helpers for templates ---------- */

@@ -39,4 +39,24 @@ return [
     'base_url'      => $env['SITE_URL'] ?? 'https://nexabie.co.tz',
     'admin_user'    => $env['ADMIN_USER'] ?? 'admin',
     'upload_max_mb' => (int) ($env['UPLOAD_MAX_MB'] ?? 5),
+
+    // MySQL for contact-form messages. Leave DB_NAME empty to keep
+    // storing them in data/inquiries.json instead.
+    'db' => [
+        'host' => $env['DB_HOST'] ?? 'localhost',
+        'port' => (int) ($env['DB_PORT'] ?? 3306),
+        'name' => $env['DB_NAME'] ?? '',
+        'user' => $env['DB_USER'] ?? '',
+        'pass' => $env['DB_PASS'] ?? '',
+    ],
+
+    // Optional SMTP relay for outgoing mail. When SMTP_HOST is set,
+    // messages are sent through it; otherwise PHP mail() is used.
+    'smtp' => [
+        'host' => $env['SMTP_HOST'] ?? '',
+        'port' => (int) ($env['SMTP_PORT'] ?? 587),
+        'user' => $env['SMTP_USER'] ?? '',
+        'pass' => $env['SMTP_PASS'] ?? '',
+        'from' => $env['SMTP_FROM'] ?? '',
+    ],
 ];

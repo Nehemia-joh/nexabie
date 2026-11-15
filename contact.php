@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/includes/emails.php';
 $c = content();
 $brand = $c['brand'];
 $ct = $c['contact'];
@@ -46,17 +47,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $to = $brand['email'];
             $subject = 'Nexabie enquiry — ' . $name;
             $body = "Name: $name\nEmail: $email\nService: $service\n\n$message\n";
-            $headers = "From: " . ($brand['name'] ?? 'Nexabie') . " <no-reply@" . parse_url(site_config()['base_url'], PHP_URL_HOST) . ">\r\n"
-                . "Reply-To: $email\r\n"
-                . "Content-Type: text/plain; charset=UTF-8\r\n";
+            $fromAddr = 'no-reply@' . parse_url(site_config()['base_url'], PHP_URL_HOST);
 
-            $mailed = @mail($to, $subject, $body, $headers);
-            // Message is stored in the admin inbox either way.
-            $sent = true;
-            $error = !$mailed;
-            if ($error) {
-                $formErrors[] = $ct['error'];
+            if (!send_email($to, $subject, $body, $brand['name'] ?? 'Nexabie', $fromAddr, $email)) {
+                error_log('Nexabie: enquiry copy could not be sent (from visitor ' . $email . ')');
             }
+
+            // Auto-reply: the sender gets a confirmation in their own inbox too.
+            $ackSubject = 'We received your message — ' . ($brand['name'] ?? 'Nexabie');
+            $ackBody = "Hi $name,\n\n"
+                . "Thanks for reaching out. Your message is safely with us and we will reply within 24 hours.\n\n"
+                . ($service !== '' ? 'You asked about: ' . ucwords($service) . "\n\n" : '')
+                . "— " . ($brand['name'] ?? 'Nexabie') . "\n"
+                . $brand['email'] . "\n";
+            $ackHtml = auto_reply_email_html($name, $email, $service, $message);
+            if (!send_email($email, $ackSubject, $ackBody, $brand['name'] ?? 'Nexabie', $fromAddr, $brand['email'], $ackHtml)) {
+                error_log('Nexabie: auto-reply could not be sent to ' . $email);
+            }
+
+            // The message is already stored (admin inbox / MySQL) — never show a lost-message error.
+            $sent = true;
         } else {
             $error = true;
         }

@@ -12,3 +12,23 @@
 SITE_URL=https://nexabie.co.tz
 ADMIN_USER=admin
 UPLOAD_MAX_MB=5
+
+# MySQL — contact-form messages are saved to this database and shown
+# in Admin → Inbox. Create the database + user in cPanel → MySQL® Databases.
+# Leave DB_NAME empty to fall back to data/inquiries.json (no database).
+DB_HOST=localhost
+DB_PORT=3306
+DB_NAME=nexabie
+DB_USER=nexabie
+DB_PASS=change-me
+
+# SMTP — outgoing mail (enquiry copy + visitor auto-reply) goes through
+# this server, which is the reliable option. cPanel SMTP credentials are
+# in cPanel → Email Accounts → your mailbox → Connect Devices (port 465
+# = implicit TLS, port 587 = STARTTLS). Leave SMTP_HOST empty to use
+# plain PHP mail() instead.
+SMTP_HOST=mail.nexabie.co.tz
+SMTP_PORT=465
+SMTP_USER=hello@nexabie.co.tz
+SMTP_PASS=mailbox-password
+# SMTP_FROM=hello@nexabie.co.tz
