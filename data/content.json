@@ -1,441 +1,631 @@
 {
-    "brand": {
-        "name": "Nexabie",
-        "mark": "n",
-        "tagline": "Ideas, built into software.",
-        "location": "Based in Dar es Salaam, Tanzania · working with clients worldwide · UTC+3",
-        "email": "hello@nexabie.co.tz",
-        "linkedin": "#",
-        "github": "#",
-        "twitter": "#"
-    },
-    "home": {
-        "kicker": "Design & engineering studio · Dar es Salaam, Tanzania",
-        "hero_before": "We bring your",
-        "hero_words": [
-            "web app",
-            "mobile app",
-            "marketplace",
-            "fintech idea",
-            "internal tool"
+  "brand": {
+    "name": "Nexabie",
+    "mark": "n",
+    "tagline": "Ideas, built into software.",
+    "location": "Based in Dar es Salaam, Tanzania · working with clients worldwide · UTC+3",
+    "email": "hello@nexabie.co.tz",
+    "linkedin": "",
+    "github": "",
+    "twitter": ""
+  },
+  "home": {
+    "kicker": "Design & engineering studio · Dar es Salaam, Tanzania",
+    "hero_before": "We bring your",
+    "hero_words": [
+      "web app",
+      "mobile app",
+      "marketplace",
+      "fintech idea",
+      "internal tool"
+    ],
+    "hero_after": "into focus.",
+    "lead": "Product design and full-stack development, from first sketch to shipped software. We also build and run our own products — so we know what it costs to keep something alive after launch.",
+    "cta_primary": "Start a project",
+    "cta_secondary": "See the work",
+    "note1": "Booking calls now",
+    "note2": "Working worldwide, UTC+3",
+    "hero_media": [
+      {
+        "image": "",
+        "title": "Nexabie Studio · client dashboard",
+        "type": "Web app"
+      },
+      {
+        "image": "",
+        "title": "Receiptly · our product",
+        "type": "Mobile"
+      }
+    ],
+    "stats": [
+      {
+        "value": "40+",
+        "label": "projects shipped"
+      },
+      {
+        "value": "1,200+",
+        "label": "users on our products"
+      },
+      {
+        "value": "3",
+        "label": "products running"
+      },
+      {
+        "value": "<24h",
+        "label": "reply to every enquiry"
+      }
+    ],
+    "work_link": "See all projects",
+    "work_title_a": "Products and client work,",
+    "work_title_b": "from first message to launch.",
+    "work_lead": "A few things we’ve designed and built recently — including software we run ourselves. Each project ships with a clear metric, a real user base, and a team that can maintain it after handover.",
+    "featured": [
+      "receiptly",
+      "afyacare",
+      "sokolink"
+    ],
+    "services_link": "Services & process",
+    "services_title_a": "Three ways in, depending on",
+    "services_title_b": "where your idea is.",
+    "quote": "“They took a rough idea and gave us software our team actually enjoys using — on time and explained in plain language.”",
+    "quote_author": "Amina Juma",
+    "quote_role": "Operations Lead, AfyaCare",
+    "aside_title": "How projects start",
+    "aside_text": "No long brief needed. A short call, a written summary back to you, and a clear next step — so you always know what happens next, what it costs, and who owns what.",
+    "aside_link": "Book a call",
+    "cta_a": "Have an idea? Let’s bring it",
+    "cta_b": "into focus."
+  },
+  "work": {
+    "title_a": "Apps and websites,",
+    "title_b": "from first message to launch.",
+    "lead": "Client projects and products we run ourselves. Filter by type below — each card shows what we shipped, the metric that mattered, and where it stands today. From clinic bookings to mobile money, these are systems in production, not mockups. If you want the full story behind any of them — architecture, trade-offs, what we would do differently — ask. We are happy to walk through the decisions, not just the screenshots.",
+    "filters": [
+      {
+        "value": "all",
+        "label": "All"
+      },
+      {
+        "value": "client",
+        "label": "Client work"
+      },
+      {
+        "value": "product",
+        "label": "Products"
+      },
+      {
+        "value": "team",
+        "label": "Team projects"
+      }
+    ],
+    "projects": [
+      {
+        "id": "receiptly",
+        "wide": true,
+        "category": "product",
+        "badge": "Our product",
+        "status": "Live",
+        "status_class": "live",
+        "kicker": "Receiptly · Our product · Live",
+        "title": "VAT-ready receipts from a phone, with reports sent automatically",
+        "metric": "1,200+ active users",
+        "metric_link": "Visit receiptly.app",
+        "image": "",
+        "href": "/work#receiptly",
+        "outcome": "VAT-ready receipts from a phone, with reports sent automatically to your accountant — built and run by Nexabie as our own product."
+      },
+      {
+        "id": "afyacare",
+        "wide": false,
+        "category": "client team",
+        "badge": "Client project",
+        "status": "Live",
+        "status_class": "live",
+        "kicker": "AfyaCare · Client project · Live",
+        "title": "Clinic appointments confirmed in minutes, not a day or two",
+        "metric": "5,000+ bookings made",
+        "metric_link": "View case study",
+        "image": "",
+        "href": "/work#afyacare",
+        "outcome": "Clinic appointments confirmed in minutes instead of a day or two, with SMS reminders that cut no-shows for the care team."
+      },
+      {
+        "id": "sokolink",
+        "wide": false,
+        "category": "product",
+        "badge": "Our product",
+        "status": "In development",
+        "status_class": "soon",
+        "kicker": "SokoLink · Our product · In development",
+        "title": "Verified sellers, fair quotes, and payment held until the job is done",
+        "metric": "Launching Q2 2027",
+        "metric_link": "View",
+        "image": "",
+        "href": "/work#sokolink",
+        "outcome": "Verified sellers, fair quotes, and payment held until the job is done — a marketplace designed for trust on first trade."
+      },
+      {
+        "id": "nurupay",
+        "wide": false,
+        "category": "client",
+        "badge": "Client project",
+        "status": "Beta",
+        "status_class": "soon",
+        "kicker": "NuruPay · Client project · Beta",
+        "title": "Send, save and receive money with fees you can actually see",
+        "metric": "Launching March 2027",
+        "metric_link": "View",
+        "image": "",
+        "href": "/work#nurupay",
+        "outcome": "Send, save and receive money with fees you can actually see, built for cross-border life between Tanzania and beyond."
+      },
+      {
+        "id": "biro",
+        "wide": false,
+        "category": "product team",
+        "badge": "Our product",
+        "status": "Open beta",
+        "status_class": "live",
+        "kicker": "Biro · Our product · Open beta",
+        "title": "Your team’s docs and decisions, in one searchable place",
+        "metric": "Free during beta",
+        "metric_link": "View",
+        "image": "",
+        "href": "/work#biro",
+        "outcome": "Your team’s docs and decisions in one searchable place, so institutional knowledge survives staff changes."
+      }
+    ],
+    "next_title": "Your idea could be next.",
+    "next_text": "Every project starts the same way: a short call, a written summary of what success looks like, and a clear next step. If you have an idea that belongs on this page, let’s make it real — we will tell you honestly whether we are the right team for it.",
+    "next_cta": "Book a call",
+    "body": "Every project on this page started with a short call and a written summary of what success would look like. Some were built for clients across East Africa; two are products we design, build and run ourselves, which means we feel every bug report and every invoice ourselves. That dual life — agency discipline plus product owner empathy — shapes how we scope, how we cut features, and how we define done. If your project belongs here, the next card could be yours."
+  },
+  "services": {
+    "title_a": "Three ways to bring your",
+    "title_b": "idea into focus.",
+    "lead": "Three ways to work with us, each with a clear scope, a fixed process, and a handover you can actually use. Start with a free intro call — no long brief needed.",
+    "deliverables_label": "What you get",
+    "engagements": [
+      {
+        "name": "Consultation",
+        "slug": "consultation",
+        "h1_a": "Consultation —",
+        "h1_b": "clarity before code.",
+        "desc": "For when you have an idea and need clarity before spending on design or code. We turn a rough concept into a scoped plan your team or investors can act on — written down in plain language, with priorities, rough timeline, and cost bands you can plan around.",
+        "duration": "Typical length: 1–2 weeks",
+        "points": [
+          "Two 60-minute working sessions with a senior product strategist and a lead engineer — not a salesperson.",
+          "Your idea rewritten as a one-page problem statement, a target-user description, and a success metric.",
+          "A prioritised feature list split into must-have for launch and nice-to-have later, with rationale for each cut.",
+          "Rough timeline and cost band for build, design and ongoing maintenance — so you know the order of magnitude before committing.",
+          "Technical recommendations written for non-technical stakeholders: web vs app vs both, and what each choice means for speed and cost.",
+          "A written report you keep, plus a 45-minute walkthrough call to answer questions and decide the next step together.",
+          "No obligation to continue with us — the plan is yours whether you build in-house or with another team.",
+          "Risk log: the top five things that could go wrong, how likely each is, and what you would do about them if they happen.",
+          "Recommended next milestone with a fixed price or a time box, so you can start build without re-opening the whole plan."
         ],
-        "hero_after": "into focus.",
-        "lead": "Product design and full-stack development, from first sketch to shipped software. We also build and run our own products.",
-        "cta_primary": "Start a project",
-        "cta_secondary": "See the work",
-        "note1": "Booking calls now",
-        "note2": "Working worldwide, UTC+3",
-        "hero_media": [
-            {
-                "image": "",
-                "title": "Nexabie Studio · client dashboard",
-                "type": "Web app"
-            },
-            {
-                "image": "",
-                "title": "Receiptly · our product",
-                "type": "Mobile"
-            }
+        "cta": "Book a call about Consultation",
+        "problems": [
+          "You have an idea, but nobody has written down what to build first.",
+          "Quotes from different studios came back wildly different.",
+          "You need something concrete to show your team or investors.",
+          "You are not sure whether you need a website, an app, or neither yet.",
+          "You want to validate the idea before hiring a full team.",
+          "You need a shared document your co-founders and investors all agree on.",
+          "You are not sure what to build first, or what to leave out of v1.",
+          "You have a budget, but no idea how far it will actually stretch."
         ],
-        "stats": [
-            {
-                "value": "40+",
-                "label": "projects shipped"
-            },
-            {
-                "value": "1,200+",
-                "label": "users on our products"
-            },
-            {
-                "value": "3",
-                "label": "products running"
-            },
-            {
-                "value": "<24h",
-                "label": "reply to every enquiry"
-            }
+        "price_note": "The first call is free. After scoping, you get one fixed price that you approve before any work starts — no retainers, no surprise invoices.",
+        "examples": [
+          "afyacare",
+          "nurupay"
         ],
-        "work_link": "See all projects",
-        "work_title_a": "Products and client work,",
-        "work_title_b": "from first message to launch.",
-        "work_lead": "A few things we’ve designed and built recently — including software we run ourselves.",
-        "featured": [
-            "receiptly",
-            "afyacare",
-            "sokolink"
-        ],
-        "services_link": "Services & process",
-        "services_title_a": "Three ways in, depending on",
-        "services_title_b": "where your idea is.",
-        "quote": "“They took a rough idea and gave us software our team actually enjoys using — on time and explained in plain language.”",
-        "quote_author": "Amina Juma",
-        "quote_role": "Operations Lead, AfyaCare",
-        "aside_title": "How projects start",
-        "aside_text": "No long brief needed. A short call, a written summary back to you, and a clear next step.",
-        "aside_link": "Book a call",
-        "cta_a": "Have an idea? Let’s bring it",
-        "cta_b": "into focus."
-    },
-    "work": {
-        "title_a": "Apps and websites,",
-        "title_b": "from first message to launch.",
-        "lead": "Client projects and products we run ourselves. Filter by type below.",
-        "filters": [
-            {
-                "value": "all",
-                "label": "All"
-            },
-            {
-                "value": "client",
-                "label": "Client work"
-            },
-            {
-                "value": "product",
-                "label": "Products"
-            },
-            {
-                "value": "team",
-                "label": "Team projects"
-            }
-        ],
-        "projects": [
-            {
-                "id": "receiptly",
-                "wide": true,
-                "category": "product",
-                "badge": "Our product",
-                "status": "Live",
-                "status_class": "live",
-                "kicker": "Receiptly · Our product · Live",
-                "title": "VAT-ready receipts from a phone, with reports sent automatically",
-                "metric": "1,200+ active users",
-                "metric_link": "Visit receiptly.app",
-                "image": "",
-                "href": "#receiptly"
-            },
-            {
-                "id": "afyacare",
-                "wide": false,
-                "category": "client team",
-                "badge": "Client project",
-                "status": "Live",
-                "status_class": "live",
-                "kicker": "AfyaCare · Client project · Live",
-                "title": "Clinic appointments confirmed in minutes, not a day or two",
-                "metric": "5,000+ bookings made",
-                "metric_link": "View case study",
-                "image": "",
-                "href": "#afyacare"
-            },
-            {
-                "id": "sokolink",
-                "wide": false,
-                "category": "product",
-                "badge": "Our product",
-                "status": "In development",
-                "status_class": "soon",
-                "kicker": "SokoLink · Our product · In development",
-                "title": "Verified sellers, fair quotes, and payment held until the job is done",
-                "metric": "Launching Q2 2027",
-                "metric_link": "View",
-                "image": "",
-                "href": "#sokolink"
-            },
-            {
-                "id": "nurupay",
-                "wide": false,
-                "category": "client",
-                "badge": "Client project",
-                "status": "Beta",
-                "status_class": "soon",
-                "kicker": "NuruPay · Client project · Beta",
-                "title": "Send, save and receive money with fees you can actually see",
-                "metric": "Launching March 2027",
-                "metric_link": "View",
-                "image": "",
-                "href": "#nurupay"
-            },
-            {
-                "id": "biro",
-                "wide": false,
-                "category": "product team",
-                "badge": "Our product",
-                "status": "Open beta",
-                "status_class": "live",
-                "kicker": "Biro · Our product · Open beta",
-                "title": "Your team’s docs and decisions, in one searchable place",
-                "metric": "Free during beta",
-                "metric_link": "View",
-                "image": "",
-                "href": "#biro"
-            }
-        ],
-        "next_title": "Your idea could be next.",
-        "next_text": "Tell us what you have in mind on a short call. No brief needed.",
-        "next_cta": "Book a call"
-    },
-    "services": {
-        "title_a": "Three ways to bring your",
-        "title_b": "idea into focus.",
-        "lead": "Start wherever your idea is today. Each one works on its own, and each begins with a call.",
-        "deliverables_label": "What you get",
-        "engagements": [
-            {
-                "name": "Consultation",
-                "desc": "For when you have an idea and need clarity before spending on design or code.",
-                "duration": "Typical length: 1–2 weeks",
-                "points": [
-                    "A written summary of your idea and who it’s for",
-                    "Agreed scope and priorities, and what to leave out for now",
-                    "A plan with a rough timeline and cost, and a recommended next step"
-                ],
-                "cta": "Book a call about Consultation"
-            },
-            {
-                "name": "Design",
-                "desc": "For when you’re ready to see your idea, screen by screen, before anything is built.",
-                "duration": "Typical length: 3–6 weeks",
-                "points": [
-                    "User flows and wireframes you can react to",
-                    "A clickable prototype, tested with real users where possible",
-                    "Final designs and a reusable design system in Figma"
-                ],
-                "cta": "Book a call about Design"
-            },
-            {
-                "name": "Development",
-                "desc": "For when the designs are ready and need careful, maintainable engineering.",
-                "duration": "Typical length: 6–12 weeks",
-                "points": [
-                    "A working web or mobile app (React, Flutter or React Native, NestJS)",
-                    "Tested, documented code that you own",
-                    "Launch support and a clear handover"
-                ],
-                "cta": "Book a call about Development"
-            }
-        ],
-        "process_a": "You see your idea early,",
-        "process_b": "and only then is it built.",
-        "steps": [
-            {
-                "n": "01",
-                "title": "Listen",
-                "text": "Your idea, in your words: a written summary of what we heard."
-            },
-            {
-                "n": "02",
-                "title": "Clarify",
-                "text": "Scope and priorities agreed, and what we’ll leave out."
-            },
-            {
-                "n": "03",
-                "title": "Visualise",
-                "text": "Wireframes or a clickable prototype you can react to."
-            },
-            {
-                "n": "04",
-                "title": "Refine",
-                "text": "Final designs you’ve approved, ready to build."
-            },
-            {
-                "n": "05",
-                "title": "Build",
-                "text": "Working software, documentation and a clear handover."
-            }
-        ],
-        "faq_a": "Good to know",
-        "faq_b": "before we start.",
         "faqs": [
-            {
-                "q": "How much does a project cost?",
-                "a": "Every engagement starts with a consultation, so you get a written estimate before committing. Typical ranges depend on scope — we’ll give you a clear number and what’s included (and excluded) in writing."
-            },
-            {
-                "q": "Do you work with clients outside Tanzania?",
-                "a": "Yes. We’re based in Dar es Salaam (UTC+3) and work with clients worldwide — calls are scheduled in your timezone, and projects run with shared docs and regular check-ins."
-            },
-            {
-                "q": "Who owns the code and designs?",
-                "a": "You do. On handover you receive the source code, design files and documentation, with no lock-in to us."
-            },
-            {
-                "q": "Can you take over an existing project?",
-                "a": "Often, yes. Send us the current state (repo, designs or a short screen recording) and we’ll tell you honestly whether we’re the right team to continue it."
-            }
+          {
+            "q": "How long does a consultation take?",
+            "a": "Usually 1–2 weeks: a discovery call, one or two working sessions, then a written summary with scope, priorities and a rough timeline."
+          },
+          {
+            "q": "What do I walk away with?",
+            "a": "A written summary of your idea and who it is for, an agreed scope (including what to leave out for now), a rough timeline and cost, and a recommended next step."
+          },
+          {
+            "q": "Can I take the plan to another developer?",
+            "a": "Yes — the summary and scope are yours to use however you like, with us or anyone else."
+          },
+          {
+            "q": "Do you write code during a consultation?",
+            "a": "No. Consultation is research, planning and decision-making only. You leave with a scoped plan — if you then choose us (or anyone else) to build it, that is a separate engagement with its own scope and price."
+          },
+          {
+            "q": "How long does a consultation take?",
+            "a": "Usually one to two weeks from first call to written report, depending on how quickly we can schedule the two working sessions and how much background material you already have."
+          },
+          {
+            "q": "What do you need from me before we start?",
+            "a": "A short description of the idea in your own words, any existing research or competitor notes, and access to one or two people who understand the problem you are solving. We send a short intake form after the first call."
+          },
+          {
+            "q": "Can you consult on an existing product, not just a new idea?",
+            "a": "Yes. Many clients come to us mid-build: the product exists but scope, architecture or roadmap has drifted. We run the same process against the current state and produce a plan to get back on track."
+          },
+          {
+            "q": "Who should join the working sessions from our side?",
+            "a": "One decision-maker who can say yes or no, plus anyone who holds the domain knowledge — a founder, a clinic manager, a logistics lead. Too many voices slows the session; too few means the plan misses ground truth."
+          }
         ],
-        "cta_a": "Not sure where to start?",
-        "cta_b": "Begin with a consultation.",
-        "cta_button": "Book a consultation"
-    },
-    "about": {
-        "title_a": "We build",
-        "title_b": "what people imagine.",
-        "lead": "Nexabie is a design and engineering studio in Dar es Salaam, Tanzania. We design products in Figma and build them in React, Flutter and NestJS — for clients worldwide, and for our own products.",
-        "cta_primary": "Work with us",
-        "cta_secondary": "Experience",
-        "portrait_image": "",
-        "portrait_alt": "Team photo placeholder",
-        "why_a": "Curiosity got us building.",
-        "why_b": "Good service keeps us at it.",
-        "why_lead": "When we see someone do their craft at their best, we want to do the same for the people we build for.",
-        "how_a": "Three habits we",
-        "how_b": "don’t compromise on.",
-        "values": [
-            {
-                "title": "Listen first",
-                "text": "Your idea, in your words, before any solution is proposed."
-            },
-            {
-                "title": "Show it early",
-                "text": "Visuals you can react to before anything is built."
-            },
-            {
-                "title": "Build to last",
-                "text": "Engineering you can maintain, explained plainly."
-            }
+        "seo_title": "Idea consultation for founders and teams | Nexabie",
+        "seo_desc": "A 1–2 week consultation that turns a rough idea into a scoped plan: audience, priorities, rough timeline and cost. Based in Dar es Salaam, working worldwide.",
+        "body": "A consultation is the cheapest way to find out whether you should build, what to build first, and roughly what it will cost. We start by listening: your idea, in your words, without interrupting or pitching. Then we ask the uncomfortable questions early — about users, budget, timing and what happens after launch — so the plan you leave with is honest rather than optimistic. Over two working sessions we map the problem, sketch the flows, and pressure-test the assumptions that would be expensive to get wrong later. Between sessions we do the homework: competitor scans, technical feasibility checks, and a clear write-up of options with trade-offs. The deliverable is a document your whole team can read in twenty minutes and act on the same day. If we believe you should not build yet, we say so — and explain why. That honesty is the point: a good plan sometimes says wait, or ship smaller, or solve the problem with process instead of software."
+      },
+      {
+        "name": "Design",
+        "slug": "design",
+        "h1_a": "Design —",
+        "h1_b": "see it before it is built.",
+        "desc": "For when you are ready to see your idea, screen by screen, before anything is built. Flows, prototypes and a design system your developers can build from — tested with real users where it matters.",
+        "duration": "Typical length: 3–6 weeks",
+        "points": [
+          "Full user flows and information architecture, so every screen has a reason to exist and a clear place to go next.",
+          "High-fidelity UI for every key screen, not just the happy path — empty states, errors, loading and edge cases included.",
+          "An interactive prototype you can click through on a phone or laptop and share with stakeholders before any code is written.",
+          "A design system: colours, type scale, spacing, components and usage rules, handed over as tokens and documented patterns.",
+          "Usability sessions with five to eight people from your target audience, with a short findings summary and prioritised fixes.",
+          "Developer-ready specs: measurements, states, responsive behaviour and asset exports, so engineering does not have to guess.",
+          "Two rounds of revision included as standard, with a clear feedback process so comments stay organised and nothing is lost in chat.",
+          "Accessibility pass on every screen: contrast, focus order, touch targets and screen-reader labels checked before handoff.",
+          "Motion and transition specs — what animates, how long, and when to respect reduced-motion preferences."
         ],
-        "exp_a": "Experience",
-        "exp_b": "and skills.",
-        "jobs": [
-            {
-                "when": "2024 – Present",
-                "title": "Founders & studio lead",
-                "org": "Nexabie · Dar es Salaam",
-                "text": "End-to-end product work for fintech, health and marketplace clients: research, design systems, full-stack builds — plus three products we run ourselves."
-            },
-            {
-                "when": "2022 – 2024",
-                "title": "Product Designer",
-                "org": "Fintech & logistics clients · Tanzania",
-                "text": "Led design for mobile money and operations tools: user flows, prototypes, high-fidelity UI and shared design systems used by engineering teams."
-            },
-            {
-                "when": "2020 – 2022",
-                "title": "Software Developer",
-                "org": "Web & mobile projects · East Africa",
-                "text": "Built and shipped Laravel, React and Flutter applications alongside senior engineers in Agile teams."
-            }
+        "cta": "Book a call about Design",
+        "problems": [
+          "Nobody can explain how the product will feel until it already exists.",
+          "Your developers keep asking questions nobody can answer.",
+          "Screens exist, but the flow confuses real users.",
+          "The brand looks different on every page.",
+          "Your developers keep asking the same questions because the design does not cover every state.",
+          "The product works, but it looks like three different teams designed it.",
+          "Stakeholders cannot picture the idea until they see something clickable.",
+          "You are building features nobody has validated with real users yet."
         ],
-        "skills": [
-            {
-                "title": "Design",
-                "items": [
-                    "UX research",
-                    "Prototyping and UI design",
-                    "Design systems"
-                ]
-            },
-            {
-                "title": "Engineering",
-                "items": [
-                    "React, TypeScript, React Native, Flutter",
-                    "NestJS, Laravel, Python, FastAPI",
-                    "PostgreSQL, SQL, REST APIs"
-                ]
-            },
-            {
-                "title": "Tools",
-                "items": [
-                    "Figma and Miro",
-                    "Git and GitHub",
-                    "Expo, TanStack, CI pipelines"
-                ]
-            }
+        "price_note": "Design is quoted as one fixed price once the flows are agreed. The first call is free, and nothing starts until you have approved the number.",
+        "examples": [
+          "receiptly",
+          "biro"
         ],
-        "cta_a": "Have an idea? Let’s bring it",
-        "cta_b": "into focus."
-    },
-    "contact": {
-        "title_a": "Tell us about",
-        "title_b": "your idea.",
-        "lead": "No brief needed. Send a message or pick a call format below — we reply within 24 hours.",
-        "note1": "Video calls on Google Meet · Times shown in your timezone",
-        "note2": "Or email hello@nexabie.co.tz",
-        "next_title": "What happens next",
-        "next_steps": [
-            "You send a message or pick a call format.",
-            "We confirm a time and send a Google Meet link.",
-            "You get a short written recap with next steps after the call."
+        "faqs": [
+          {
+            "q": "How many rounds of revisions are included?",
+            "a": "We iterate until the flow and visual direction are approved — the rounds are written into the scope up front, so there is no meter running in the background."
+          },
+          {
+            "q": "What files do I get?",
+            "a": "Everything: the Figma file with all screens, components and assets is yours, ready for any developer to build from."
+          },
+          {
+            "q": "Do you test designs with real users?",
+            "a": "Where it makes sense, yes — we put the clickable prototype in front of real people and adjust based on what they actually do."
+          },
+          {
+            "q": "Do you use a design system, or redesign from scratch each time?",
+            "a": "Every engagement ships with a design system — even on a short project. It is how we keep screens consistent and how your team keeps the product consistent after we hand over."
+          },
+          {
+            "q": "Can you work with our existing brand and components?",
+            "a": "Yes. If you already have a brand or a component library, we extend it rather than replace it, and we document any gaps we fill so your design debt stays visible."
+          },
+          {
+            "q": "What do you need from us to start design?",
+            "a": "A clear problem statement and audience (from consultation or your own work), any brand assets, and one decision-maker who can give feedback within 48 hours of each review. We handle research recruiting if you do not have users to test with."
+          },
+          {
+            "q": "How do you handle feedback and revisions?",
+            "a": "Feedback lives in one place — we review together on a call, consolidate comments, and return a revised round. Two full revision rounds are standard; additional rounds are scoped transparently if the brief has genuinely changed."
+          },
+          {
+            "q": "Do you design for mobile first or desktop first?",
+            "a": "We design mobile-first when the product is used on the go (field apps, marketplaces, booking), and desktop-first for dense tools (dashboards, admin, reporting). The decision is written into the brief so nobody has to guess."
+          }
         ],
-        "calls": [
-            {
-                "name": "Intro call",
-                "desc": "A first conversation about your idea, the role, or how we could work together.",
-                "dur": "30 min · Choose",
-                "subject": "Intro call with Nexabie"
-            },
-            {
-                "name": "Working session",
-                "desc": "Bring one specific problem — a design review, a project plan. We work through it together.",
-                "dur": "60 min · Choose",
-                "subject": "Working session with Nexabie"
-            }
+        "seo_title": "Product design and UI/UX in Figma | Nexabie",
+        "seo_desc": "User flows, wireframes, clickable prototypes and polished UI designed in Figma — see and test your product before a line of code is written. Dar es Salaam studio, working worldwide.",
+        "body": "Design is where your idea becomes something people can point at, click, and argue with. We start with flows, not pixels: what the user is trying to do, what gets in the way, and what the screen must say at each step. Only then do we draw. Screens are designed in pairs of states — empty and full, success and failure — because software is judged by how it behaves when things go wrong, not when they go right. You review an interactive prototype early, while changes are still cheap, and we run quick usability sessions before engineering commits to a direction. The handover is a design system your developers can implement without translating: tokens, components, rules, and annotated screens for every breakpoint. Our job is done when your team can build the next feature without asking us what colour a button should be."
+      },
+      {
+        "name": "Development",
+        "slug": "development",
+        "h1_a": "Development —",
+        "h1_b": "code you actually own.",
+        "desc": "For when the designs are ready and need careful, maintainable engineering. Web, mobile and APIs — shipped with tests, docs and a clean handover your team can own.",
+        "duration": "Typical length: 6–12 weeks",
+        "points": [
+          "Production web applications, mobile apps and APIs built to the designs you approved — with staging environments you can watch progress on every week.",
+          "Automated tests on the paths that matter most: payments, authentication, data integrity, and the flows your business depends on.",
+          "Performance and accessibility checked against real budgets (Lighthouse, contrast, keyboard navigation) before launch, not after complaints.",
+          "CI/CD pipelines so every merge is deployed the same way, with rollbacks that take minutes instead of a war room.",
+          "Documentation written for the engineer who joins next year: architecture notes, setup guides, runbooks for common incidents.",
+          "A structured handover — repo, credentials, infrastructure access and a live walkthrough — so nothing lives only in our heads.",
+          "Optional post-launch support retainers if you want us on call while your team ramps up.",
+          "Security basics as default: input validation, hashed credentials, least-privilege access, dependency scanning on every build.",
+          "Analytics and error tracking wired before launch so you see real usage and real failures from day one."
         ],
-        "form_title": "Send a message",
-        "form_hint": "Or email us directly — whichever you prefer.",
-        "services_select": [
-            {
-                "value": "consultation",
-                "label": "Consultation — clarify my idea"
-            },
-            {
-                "value": "design",
-                "label": "Design — see it before it’s built"
-            },
-            {
-                "value": "development",
-                "label": "Development — build it"
-            },
-            {
-                "value": "product",
-                "label": "A product partnership"
-            },
-            {
-                "value": "other",
-                "label": "Something else"
-            }
+        "cta": "Book a call about Development",
+        "problems": [
+          "You have designs but no team to build them.",
+          "Your current site or app is slow, broken, or stuck halfway.",
+          "You were handed a codebase nobody can maintain.",
+          "You need web and mobile built by one team.",
+          "Designs are ready, but the last two agencies quoted without reading them.",
+          "Your current codebase works, yet nobody wants to touch it.",
+          "Launch is close and quality, tests or performance are still unknown.",
+          "You need senior engineers who will explain decisions, not just commit code."
         ],
-        "labels": {
-            "name": "Name",
-            "email": "Email",
-            "service": "What do you need?",
-            "message": "About your idea",
-            "submit": "Send message"
-        },
-        "placeholders": {
-            "name": "Your name",
-            "email": "you@company.com",
-            "message": "A few sentences are enough — what is it, and who is it for?"
-        },
-        "privacy_note": "By sending, you agree we may reply to your enquiry. See our",
-        "success": "Thanks — your message is on its way. We’ll reply within 24 hours.",
-        "error": "Something went wrong sending your message. Please email us directly instead."
-    },
-    "privacy": {
-        "title_a": "Privacy,",
-        "title_b": "in plain language.",
-        "lead": "Last updated: November 2026. This is a placeholder policy — have your lawyer review it before launch.",
-        "sections": [
-            {
-                "q": "What we collect",
-                "a": "When you contact us (form or email), we receive whatever you choose to share — typically your name, email address and a description of your idea. We don’t collect sensitive personal data through this website."
-            },
-            {
-                "q": "How we use it",
-                "a": "Only to reply to your enquiry, prepare for a call, and — if you become a client — to deliver the project. We never sell your data or share it with advertisers."
-            },
-            {
-                "q": "Analytics & cookies",
-                "a": "This site doesn’t set advertising cookies. If you add analytics later (e.g. a privacy-friendly tool), update this section and add a consent notice."
-            },
-            {
-                "q": "How long we keep it",
-                "a": "Enquiry emails are kept for up to 24 months, then deleted. Client project records are kept as long as legally required for accounting."
-            },
-            {
-                "q": "Your rights",
-                "a": "You can ask what we hold about you, request correction or deletion at any time — email hello@nexabie.co.tz."
-            }
+        "price_note": "Every build is scoped and quoted up front, in phases you can stop at. The first call is free, and you own the code from day one.",
+        "examples": [
+          "nurupay",
+          "afyacare",
+          "sokolink"
+        ],
+        "faqs": [
+          {
+            "q": "What do you build with?",
+            "a": "React and NestJS for the web, Flutter for mobile — plus the APIs, databases and hosting around them. Proven tools, no experiments on your budget."
+          },
+          {
+            "q": "How long does a build take?",
+            "a": "Most projects land in 6–12 weeks. We quote in phases after scoping, so you always know what the next phase costs and when it ships."
+          },
+          {
+            "q": "Do we own the code?",
+            "a": "Yes — tested, documented code in your repositories, handed over at launch. No lock-in and no licence fees to keep using your own product."
+          },
+          {
+            "q": "What stack do you build on?",
+            "a": "We choose per project. Most client work lands on PHP or Node for APIs, a modern frontend (React, Vue or server-rendered PHP), and Postgres or MySQL for data. We document every choice and its trade-offs so you are never locked into a framework you cannot hire for."
+          },
+          {
+            "q": "Who owns the code and the repository?",
+            "a": "You do, from day one. Work happens in your organisation's Git host (or one we set up and transfer), and all licences, domains and cloud accounts are in your name. There is no proprietary runtime you have to keep paying us for."
+          },
+          {
+            "q": "How do you handle bugs after launch?",
+            "a": "Every project includes a post-launch warranty window — typically two to four weeks — for defects we introduced. After that, most clients either take a support retainer or bring maintenance in-house with the documentation we hand over."
+          },
+          {
+            "q": "Can you join an existing team mid-project?",
+            "a": "Yes. We start with a short code and architecture review, agree on conventions, and pick up tickets within the first week. We are comfortable working inside your process — sprints, boards, review rules — rather than replacing it."
+          },
+          {
+            "q": "How do you estimate timeline and cost?",
+            "a": "After a short scoping call we send a fixed-scope proposal with milestones, assumptions and an out-of-scope list. If the brief changes mid-build, we re-estimate in writing before any extra work starts."
+          }
+        ],
+        "seo_title": "Web & mobile app development | Nexabie",
+        "seo_desc": "Full-stack web and mobile development — React, Flutter, NestJS — with tests, docs and a clean handover your team can own.",
+        "body": "Development is where plans and pixels turn into something running on a server. We build in small, reviewable increments — you see progress on staging every week, not a demo at the end. Code is written to be read: clear structure, tests on the paths that matter, and comments only where the 'why' is not obvious from the code itself. Before launch we run the unglamorous checklist — performance budgets, accessibility, backup restore, monitoring alerts — because that is what separates a demo from a product. Handover is a first-class deliverable: repository access, infrastructure credentials, architecture notes, and a live walkthrough with your team so the first bug they fix does not require calling us. If you want us to stay on after launch for a support retainer, we scope it in writing; if you would rather own it entirely, we make sure you can."
+      }
+    ],
+    "process_a": "You see your idea early,",
+    "process_b": "and only then is it built.",
+    "steps": [
+      {
+        "n": "01",
+        "title": "Listen",
+        "text": "Your idea, in your words: a written summary of what we heard."
+      },
+      {
+        "n": "02",
+        "title": "Clarify",
+        "text": "Scope and priorities agreed, and what we’ll leave out."
+      },
+      {
+        "n": "03",
+        "title": "Visualise",
+        "text": "Wireframes or a clickable prototype you can react to."
+      },
+      {
+        "n": "04",
+        "title": "Refine",
+        "text": "Final designs you’ve approved, ready to build."
+      },
+      {
+        "n": "05",
+        "title": "Build",
+        "text": "Working software, documentation and a clear handover."
+      }
+    ],
+    "faq_a": "Good to know",
+    "faq_b": "before we start.",
+    "faqs": [
+      {
+        "q": "How much does a project cost?",
+        "a": "Every engagement starts with a consultation, so you get a written estimate before committing. Typical ranges depend on scope — we’ll give you a clear number and what’s included (and excluded) in writing."
+      },
+      {
+        "q": "Do you work with clients outside Tanzania?",
+        "a": "Yes. We’re based in Dar es Salaam (UTC+3) and work with clients worldwide — calls are scheduled in your timezone, and projects run with shared docs and regular check-ins."
+      },
+      {
+        "q": "Who owns the code and designs?",
+        "a": "You do. On handover you receive the source code, design files and documentation, with no lock-in to us."
+      },
+      {
+        "q": "Can you take over an existing project?",
+        "a": "Often, yes. Send us the current state (repo, designs or a short screen recording) and we’ll tell you honestly whether we’re the right team to continue it."
+      }
+    ],
+    "cta_a": "Not sure where to start?",
+    "cta_b": "Begin with a consultation.",
+    "cta_button": "Book a consultation"
+  },
+  "about": {
+    "title_a": "We build",
+    "title_b": "what people imagine.",
+    "lead": "Nexabie is a design and engineering studio in Dar es Salaam, Tanzania. We design products in Figma and build them in React, Flutter and NestJS — for clients worldwide, and for our own products.",
+    "cta_primary": "Work with us",
+    "cta_secondary": "Experience",
+    "portrait_image": "",
+    "portrait_alt": "Team photo placeholder",
+    "why_a": "Curiosity got us building.",
+    "why_b": "Good service keeps us at it.",
+    "why_lead": "When we see someone do their craft at their best, we want to do the same for the people we build for. Nexabie started in Dar es Salaam with a simple observation: too many software projects fail because the idea was never written down, the design was never tested, or the code was handed over without a plan to maintain it. We built this studio to close those gaps. We listen first — your idea, in your words, before any solution is proposed. We show it early — visuals you can react to before anything is built. And we build to last — engineering you can maintain, explained plainly, with documentation and handover so your team is never locked in. Whether you are a founder shaping a first product, or an established team shipping a new platform, our job is the same: turn ambition into software that works on the day it ships and still works a year later. Clients come to us from fintech, health, logistics and marketplaces across East Africa and beyond — and we treat every engagement as a partnership, not a ticket queue.",
+    "how_a": "Three habits we",
+    "how_b": "don’t compromise on.",
+    "values": [
+      {
+        "title": "Listen first",
+        "text": "Your idea, in your words, before any solution is proposed."
+      },
+      {
+        "title": "Show it early",
+        "text": "Visuals you can react to before anything is built."
+      },
+      {
+        "title": "Build to last",
+        "text": "Engineering you can maintain, explained plainly."
+      }
+    ],
+    "exp_a": "Experience",
+    "exp_b": "and skills.",
+    "jobs": [
+      {
+        "when": "2024 – Present",
+        "title": "Founders & studio lead",
+        "org": "Nexabie · Dar es Salaam",
+        "text": "End-to-end product work for fintech, health and marketplace clients: research, design systems, full-stack builds — plus three products we run ourselves. Across the full stack — research, design systems, and production deploys — always with the client in the loop."
+      },
+      {
+        "when": "2022 – 2024",
+        "title": "Product Designer",
+        "org": "Fintech & logistics clients · Tanzania",
+        "text": "Led design for mobile money and operations tools: user flows, prototypes, high-fidelity UI and shared design systems used by engineering teams. Partnered closely with engineers so handoff was a conversation, not a PDF."
+      },
+      {
+        "when": "2020 – 2022",
+        "title": "Software Developer",
+        "org": "Web & mobile projects · East Africa",
+        "text": "Built and shipped Laravel, React and Flutter applications alongside senior engineers in Agile teams. Shipped iteratively with real users in the loop from week one."
+      }
+    ],
+    "skills": [
+      {
+        "title": "Design",
+        "items": [
+          "UX research",
+          "Prototyping and UI design",
+          "Design systems"
         ]
-    }
+      },
+      {
+        "title": "Engineering",
+        "items": [
+          "React, TypeScript, React Native, Flutter",
+          "NestJS, Laravel, Python, FastAPI",
+          "PostgreSQL, SQL, REST APIs"
+        ]
+      },
+      {
+        "title": "Tools",
+        "items": [
+          "Figma and Miro",
+          "Git and GitHub",
+          "Expo, TanStack, CI pipelines"
+        ]
+      }
+    ],
+    "cta_a": "Have an idea? Let’s bring it",
+    "cta_b": "into focus."
+  },
+  "contact": {
+    "title_a": "Tell us about",
+    "title_b": "your idea.",
+    "lead": "No brief needed. Send a message or pick a call format below — we reply within 24 hours.",
+    "note1": "Video calls on Google Meet · Times shown in your timezone",
+    "note2": "Or email hello@nexabie.co.tz",
+    "next_title": "What happens next",
+    "next_steps": [
+      "You send a message or pick a call format.",
+      "We confirm a time and send a Google Meet link.",
+      "You get a short written recap with next steps after the call."
+    ],
+    "calls": [
+      {
+        "name": "Intro call",
+        "desc": "A first conversation about your idea, the role, or how we could work together.",
+        "dur": "30 min · Choose",
+        "subject": "Intro call with Nexabie"
+      },
+      {
+        "name": "Working session",
+        "desc": "Bring one specific problem — a design review, a project plan. We work through it together.",
+        "dur": "60 min · Choose",
+        "subject": "Working session with Nexabie"
+      }
+    ],
+    "form_title": "Send a message",
+    "form_hint": "Or email us directly — whichever you prefer.",
+    "services_select": [
+      {
+        "value": "consultation",
+        "label": "Consultation — clarify my idea"
+      },
+      {
+        "value": "design",
+        "label": "Design — see it before it’s built"
+      },
+      {
+        "value": "development",
+        "label": "Development — build it"
+      },
+      {
+        "value": "product",
+        "label": "A product partnership"
+      },
+      {
+        "value": "other",
+        "label": "Something else"
+      }
+    ],
+    "labels": {
+      "name": "Name",
+      "email": "Email",
+      "service": "What do you need?",
+      "message": "About your idea",
+      "submit": "Send message"
+    },
+    "placeholders": {
+      "name": "Your name",
+      "email": "you@company.com",
+      "message": "A few sentences are enough — what is it, and who is it for?"
+    },
+    "privacy_note": "By sending, you agree we may reply to your enquiry. See our",
+    "success": "Thanks — your message is on its way. We’ll reply within 24 hours.",
+    "error": "Something went wrong sending your message. Please email us directly instead."
+  },
+  "privacy": {
+    "title_a": "Privacy,",
+    "title_b": "in plain language.",
+    "lead": "Last updated: November 2026. This is a placeholder policy — have your lawyer review it before launch.",
+    "sections": [
+      {
+        "q": "What we collect",
+        "a": "When you contact us (form or email), we receive whatever you choose to share — typically your name, email address and a description of your idea. We don’t collect sensitive personal data through this website."
+      },
+      {
+        "q": "How we use it",
+        "a": "Only to reply to your enquiry, prepare for a call, and — if you become a client — to deliver the project. We never sell your data or share it with advertisers."
+      },
+      {
+        "q": "Analytics & cookies",
+        "a": "This site doesn’t set advertising cookies. If you add analytics later (e.g. a privacy-friendly tool), update this section and add a consent notice."
+      },
+      {
+        "q": "How long we keep it",
+        "a": "Enquiry emails are kept for up to 24 months, then deleted. Client project records are kept as long as legally required for accounting."
+      },
+      {
+        "q": "Your rights",
+        "a": "You can ask what we hold about you, request correction or deletion at any time — email hello@nexabie.co.tz."
+      }
+    ]
+  }
 }

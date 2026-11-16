@@ -77,7 +77,7 @@ require __DIR__ . '/includes/header.php';
 ?>
 
     <section class="page-hero wrap">
-      <p class="breadcrumb"><a href="index"><?= e($brand['name']) ?></a> — Contact</p>
+      <p class="breadcrumb"><a href="/"><?= e($brand['name']) ?></a> — Contact</p>
       <h1 class="display"><?= e($ct['title_a']) ?><br><?= e($ct['title_b']) ?></h1>
       <p class="lead"><?= e($ct['lead']) ?></p>
       <div class="hero-note">

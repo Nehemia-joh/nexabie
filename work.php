@@ -12,10 +12,18 @@ require __DIR__ . '/includes/header.php';
 ?>
 
     <section class="page-hero wrap">
-      <p class="breadcrumb"><a href="index"><?= e($brand['name']) ?></a> — Work</p>
+      <p class="breadcrumb"><a href="/"><?= e($brand['name']) ?></a> — Work</p>
       <h1 class="display"><?= e($w['title_a']) ?><br><?= e($w['title_b']) ?></h1>
       <p class="lead"><?= e($w['lead']) ?></p>
     </section>
+
+    <?php if (!empty($w['body'])): ?>
+    <section class="section wrap" style="padding-top:0" aria-label="About our work">
+      <div class="rich-text" style="max-width:760px">
+        <p class="lead" style="margin-bottom:0"><?= e($w['body']) ?></p>
+      </div>
+    </section>
+    <?php endif; ?>
 
     <section class="section wrap" style="padding-top:0">
       <div class="filters" role="group" aria-label="Filter projects">
@@ -41,6 +49,9 @@ require __DIR__ . '/includes/header.php';
           <div class="work-body">
             <span class="kicker"><?= e(explode(' · ', $p['kicker'])[0]) ?></span>
             <h3><?= e($p['title']) ?></h3>
+            <?php if (!empty($p['outcome'])): ?>
+            <p class="work-outcome"><?= e($p['outcome']) ?></p>
+            <?php endif; ?>
             <div class="work-metric"><span><?= e($p['metric']) ?></span><span><?= e($p['metric_link']) ?></span></div>
           </div>
         </a>
@@ -50,7 +61,7 @@ require __DIR__ . '/includes/header.php';
           <div>
             <h3><?= e($w['next_title']) ?></h3>
             <p><?= e($w['next_text']) ?></p>
-            <a class="btn btn-primary" href="contact"><?= e($w['next_cta']) ?></a>
+            <a class="btn btn-primary" href="/contact"><?= e($w['next_cta']) ?></a>
           </div>
         </div>
       </div>

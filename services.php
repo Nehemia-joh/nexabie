@@ -4,14 +4,14 @@ $c = content();
 $brand = $c['brand'];
 $s = $c['services'];
 
-$pageTitle = 'Services — consultation, product design and development | ' . ($brand['name'] ?? 'Nexabie');
+$pageTitle = 'Services — consultation, design & development | Nexabie';
 $pageDescription = 'Three ways to work with ' . ($brand['name'] ?? 'Nexabie') . ': consultation, product design and full-stack development — with a clear process from first call to handover.';
 
 require __DIR__ . '/includes/header.php';
 ?>
 
     <section class="page-hero wrap">
-      <p class="breadcrumb"><a href="index"><?= e($brand['name']) ?></a> — Services</p>
+      <p class="breadcrumb"><a href="/"><?= e($brand['name']) ?></a> — Services</p>
       <h1 class="display"><?= e($s['title_a']) ?><br><?= e($s['title_b']) ?></h1>
       <p class="lead"><?= e($s['lead']) ?></p>
     </section>
@@ -22,7 +22,7 @@ require __DIR__ . '/includes/header.php';
         <?php foreach ($s['engagements'] as $eng): ?>
         <article class="service">
           <div>
-            <h3 id="eng-title"><?= e($eng['name']) ?></h3>
+            <h3 id="eng-title"><a href="services/<?= e($eng['slug']) ?>"><?= e($eng['name']) ?></a></h3>
             <p class="lead"><?= e($eng['desc']) ?></p>
             <span class="duration"><?= e($eng['duration']) ?></span>
           </div>

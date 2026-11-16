@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /data/
+Disallow: /dev-router.php
+Disallow: /*.php$
+
+Sitemap: https://nexabie.co.tz/sitemap.xml

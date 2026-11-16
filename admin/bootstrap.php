@@ -62,7 +62,6 @@ function admin_head(string $title, string $active): void
       <a href="./" class="<?= $active === 'dashboard' ? 'on' : '' ?>">Dashboard</a>
       <a href="content" class="<?= $active === 'content' ? 'on' : '' ?>">Content</a>
       <a href="media" class="<?= $active === 'media' ? 'on' : '' ?>">Media</a>
-      <a href="font" class="<?= $active === 'font' ? 'on' : '' ?>">Font</a>
       <a href="inbox" class="<?= $active === 'inbox' ? 'on' : '' ?>">Inbox<?= $count ? ' <span class="pill">' . $count . '</span>' : '' ?></a>
       <a href="settings" class="<?= $active === 'settings' ? 'on' : '' ?>">Settings</a>
       <a href="../" target="_blank" rel="noopener" class="ghost">View site ↗</a>

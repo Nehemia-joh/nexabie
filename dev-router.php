@@ -40,6 +40,14 @@ if (isset($rootPages[$path])) {
     exit;
 }
 
+// Service detail pages: /services/consultation → service.php?slug=consultation
+if (preg_match('#^/services/([a-z]+)(?:/)?$#', $path, $m)) {
+    $_GET['slug'] = $m[1];
+    $_SERVER['SCRIPT_NAME'] = '/service.php';
+    require __DIR__ . '/service.php';
+    exit;
+}
+
 if (preg_match('#^/admin/?$#', $path)) {
     $_SERVER['SCRIPT_NAME'] = '/admin/index.php';
     require __DIR__ . '/admin/index.php';
@@ -54,4 +62,6 @@ if (preg_match('#^/admin/([a-z]+)/?$#', $path, $m)) {
 }
 
 http_response_code(404);
-exit('Not found');
+$_SERVER['SCRIPT_NAME'] = '/404.php';
+require __DIR__ . '/404.php';
+exit;

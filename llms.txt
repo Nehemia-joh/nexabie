@@ -1,0 +1,26 @@
+# Nexabie
+
+> Nexabie is a software design and development studio in Dar es Salaam, Tanzania. We design products in Figma and build web and mobile apps in React, Flutter and NestJS — for clients worldwide, and for our own products.
+
+We offer three ways to work with us:
+
+- **Consultation** — a 1–2 week engagement that turns a rough idea into a scoped plan: audience, priorities, rough timeline and cost.
+- **Product design** — user flows, wireframes, clickable prototypes and polished UI designed in Figma.
+- **Development** — full-stack engineering: web apps, mobile apps and APIs built with React, Flutter and NestJS.
+
+## Key pages
+
+- [Home](https://nexabie.co.tz/): Studio overview, selected work and how projects start.
+- [Work](https://nexabie.co.tz/work): Client projects and products Nexabie designs, builds and runs — including Receiptly, AfyaCare, SokoLink, NuruPay and Biro.
+- [Services](https://nexabie.co.tz/services): Consultation, product design and full-stack development, with process from first call to handover.
+- [Consultation](https://nexabie.co.tz/services/consultation): Idea consultation for founders and teams.
+- [Product design](https://nexabie.co.tz/services/design): Product design and UI/UX in Figma.
+- [Development](https://nexabie.co.tz/services/development): Web and mobile app development — React, Flutter, NestJS.
+- [About](https://nexabie.co.tz/about): The team, experience and skills behind Nexabie.
+- [Contact](https://nexabie.co.tz/contact): Book a call or send a message — reply within 24 hours.
+- [Privacy](https://nexabie.co.tz/privacy): How Nexabie handles your information.
+
+## Contact
+
+- Email: hello@nexabie.co.tz
+- Location: Dar es Salaam, Tanzania (UTC+3) — working with clients worldwide

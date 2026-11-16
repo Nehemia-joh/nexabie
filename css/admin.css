@@ -8,7 +8,7 @@
 
 :root {
   --font-sans: "Instrument Sans", system-ui, -apple-system, sans-serif;
-  --font-display: "Sneaker", "Instrument Sans", system-ui, sans-serif;
+  --font-display: "Instrument Sans", system-ui, -apple-system, sans-serif;
 }
 
 body.admin {
@@ -776,15 +776,7 @@ fieldset.dict legend {
   }
 }
 
-/* ---------- Font test page ---------- */
-
-@font-face {
-  font-family: "Sneaker";
-  src: url("../assets/fonts/SNEAKER.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
+/* ---------- Type tester page ---------- */
 
 .tester-controls {
   display: flex;
@@ -884,8 +876,9 @@ input[type="range"] {
 }
 
 .type-line {
-  font-family: "Sneaker", system-ui, sans-serif;
-  font-weight: 400;
+  font-family: "Instrument Sans", system-ui, sans-serif;
+  font-weight: 650;
+  letter-spacing: -0.03em;
   line-height: 1.12;
   word-wrap: break-word;
 }

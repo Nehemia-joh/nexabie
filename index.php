@@ -7,7 +7,7 @@ $brand = $c['brand'];
 $work = $c['work'];
 $services = $c['services'];
 
-$pageTitle = ($brand['name'] ?? 'Nexabie') . ' — Software design & development studio in Tanzania';
+$pageTitle = 'Nexabie — software design & development studio | Tanzania';
 $pageDescription = 'Nexabie is a software design and development studio in Tanzania. We design products and build web and mobile apps — from first sketch to shipped software.';
 
 require __DIR__ . '/includes/header.php';
@@ -111,7 +111,7 @@ require __DIR__ . '/includes/header.php';
         <?php foreach ($services['engagements'] as $eng): ?>
         <article class="service">
           <div>
-            <h3><?= e($eng['name']) ?></h3>
+            <h3><a href="services/<?= e($eng['slug']) ?>"><?= e($eng['name']) ?></a></h3>
             <p class="lead"><?= e($eng['desc']) ?></p>
             <span class="duration"><?= e(str_replace('Typical length: ', '', $eng['duration'])) ?></span>
           </div>

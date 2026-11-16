@@ -1,19 +1,45 @@
 # ---------------------------------------------------------------------------
-# Nexabie — root routing & protection
+# Nexabie — root routing, canonicalization, performance & protection
 # ---------------------------------------------------------------------------
 
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
+# Force apex host: www.nexabie.co.tz → nexabie.co.tz (no www duplicate)
+RewriteCond %{HTTP_HOST} ^www\.nexabie\.co\.tz [NC]
+RewriteRule ^(.*)$ https://nexabie.co.tz/$1 [R=301,L]
+
+# Trailing slash → canonical no-slash URL (homepage excluded)
+RewriteCond %{THE_REQUEST} \s/(about|work|services|contact|privacy|index)/[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+RewriteCond %{THE_REQUEST} \s/services/([a-z]+)/[\s?] [NC]
+RewriteRule ^ /services/%1 [R=301,L]
+
+# /index → / (one homepage URL only)
+RewriteCond %{THE_REQUEST} \s/index[\s?] [NC]
+RewriteRule ^index$ / [R=301,L]
+
 # Canonical extensionless URLs: /work.php → /work (query string kept).
 # THE_REQUEST matches only real browser requests, so internal rewrites
 # never trigger a redirect loop.
-RewriteCond %{THE_REQUEST} \s/(index|work|services|about|contact|privacy)\.php[\s?] [NC]
+RewriteCond %{THE_REQUEST} \s/index\.php[\s?] [NC]
+RewriteRule ^index\.php$ / [R=301,L]
+RewriteCond %{THE_REQUEST} \s/(work|services|about|contact|privacy)\.php[\s?] [NC]
 RewriteRule ^ /%1 [R=301,L]
+
+# Direct service.php?slug=x → canonical /services/x
+RewriteCond %{THE_REQUEST} \s/service\.php\?slug=([a-z]+)[\s?&] [NC]
+RewriteRule ^service\.php$ /services/%1 [R=301,L]
+
+# Never expose the local dev router or raw SQL dumps
+RewriteRule ^(?:dev-router\.php|nexabie\.sql)$ - [F,L]
 
 # Extensionless → .php (internal): /work → work.php, / → index.php
 RewriteRule ^$ index.php [L]
 RewriteRule ^(index|work|services|about|contact|privacy)/?$ $1.php [L]
+
+# Service detail pages: /services/consultation → service.php?slug=consultation
+RewriteRule ^services/([a-z]+)/?$ service.php?slug=$1 [L]
 
 # Admin front controller: every admin URL runs through admin/index.php
 # (/admin, /admin/login, /admin/content …)
@@ -26,7 +52,13 @@ RewriteRule ^admin/(?!index\.php)[a-z]+\.php$ - [F,L]
 
 # Never expose config or include files over HTTP
 RewriteRule ^(?:config\.php|includes/) - [F,L]
+
+# Admin area: tell crawlers not to index (belt and braces with robots.txt)
+RewriteRule ^admin/ - [E=NOINDEX:1]
 </IfModule>
+
+# Custom 404 page (404.php sets http_response_code(404) itself)
+ErrorDocument 404 /404.php
 
 # Never serve dotfiles directly (.git, .env*, .cpanel.yml, …)
 <FilesMatch "^\.">
@@ -39,7 +71,52 @@ RewriteRule ^(?:config\.php|includes/) - [F,L]
     </IfModule>
 </FilesMatch>
 
+# Block data dumps if ever dropped in web root
+<FilesMatch "\.(sql|sqlite|db)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+</FilesMatch>
+
 # No directory listings
 Options -Indexes
 
 DirectoryIndex index.php
+
+# ---------------------------------------------------------------------------
+# Compression
+# ---------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml application/xml
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Browser caching
+# ---------------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 1 hour"
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType image/png "access plus 7 days"
+  ExpiresByType image/jpeg "access plus 7 days"
+  ExpiresByType image/webp "access plus 7 days"
+  ExpiresByType image/svg+xml "access plus 7 days"
+  ExpiresByType image/x-icon "access plus 30 days"
+  ExpiresByType font/ttf "access plus 30 days"
+  ExpiresByType font/woff2 "access plus 30 days"
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Security & crawler headers
+# ---------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+  Header always set X-Robots-Tag "noindex" env=NOINDEX
+</IfModule>
